@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="node.js,">
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="弹指间，樯橹灰飞烟灭。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="Node.js—http模块、url模块、nodemon工具">
+<meta name="keywords" content="node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02http_module">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/02http-module/index.html">
 <meta property="og:site_name" content="Elaine Zhong">
-<meta property="og:description" content="弹指间，樯橹灰飞烟灭。">
+<meta property="og:description" content="Node.js—http模块、url模块、nodemon工具">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T10:33:02.683Z">
+<meta property="og:image" content="https://a.ilovecoding.org/thumb/nodeWk-8-httpServer.png">
+<meta property="og:updated_time" content="2019-04-22T04:33:33.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="弹指间，樯橹灰飞烟灭。">
+<meta name="twitter:title" content="02http_module">
+<meta name="twitter:description" content="Node.js—http模块、url模块、nodemon工具">
+<meta name="twitter:image" content="https://a.ilovecoding.org/thumb/nodeWk-8-httpServer.png">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/02http-module/">
 
 
 
 
 
-  <title>about | Elaine Zhong</title>
+  <title>02http_module | Elaine Zhong</title>
   
 
 
@@ -287,33 +290,254 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/02http-module/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Elaine Zhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/21.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elaine Zhong">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">02http_module</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T12:30:29+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">node.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/22/02http-module/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/02http-module/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/22/02http-module/" class="leancloud_visitors" data-flag-title="02http_module">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1>Node.js—http模块、url模块、nodemon工具</h1>
+<p><img src="https://a.ilovecoding.org/thumb/nodeWk-8-httpServer.png" alt></p>
+<a id="more"></a>
+<h2 id="一-node-js创建第一个应用">一、Node.js创建第一个应用</h2>
+<p>1、引入http模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br></pre></td></tr></table></figure>
+<p>2、创建服务器</p>
+<p>接下来我们使用 <code>http.createServer() 方法创建服务器</code>，并使用 listen 方法绑定 8888 端口。<br>
+函数通过 request, response 参数来接收和响应数据。</p>
+<p><font color="#9A32CD"><strong>server.js</strong></font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);  </span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123; </span><br><span class="line">    <span class="comment">// 发送 HTTP 头部   </span></span><br><span class="line">    <span class="comment">// HTTP 状态值: 200 : OK </span></span><br><span class="line">    <span class="comment">//设置 HTTP 头部，状态码是 200，文件类型是 html，字符集是 utf8  </span></span><br><span class="line">    response.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html;charset=UTF-8"</span>&#125;); </span><br><span class="line">    <span class="comment">// 发送响应数据 "Hello World"  </span></span><br><span class="line">    res.end(<span class="string">"哈哈哈哈，我买了一个 iPhone"</span> + (<span class="number">1</span>+<span class="number">2</span>+<span class="number">3</span>) + <span class="string">"s"</span>); </span><br><span class="line">&#125;).listen(<span class="number">8888</span>); </span><br><span class="line"><span class="comment">// 终端打印如下信息 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:8888/'</span>);</span><br></pre></td></tr></table></figure>
+<p>3、运行程序</p>
+<p>用命令行切换到程序对应目录。通过 node 命令运行程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node server.js</span><br></pre></td></tr></table></figure>
+<p>浏览器运行 : 127.0.0.1:8888</p>
+<p>我们本地写一个 js，打死都不能直接拖入浏览器运行，但是有了 node，我 们任何一个 js 文件，都可以通过 node 来运行。也就是说，<code>node 就是一个 js 的执行环境</code>。</p>
+<h2 id="二-http-模块-url-模块">二、HTTP 模块、URL 模块</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引用模块 </span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>); </span><br><span class="line"> <span class="comment">//创建一个服务器，回调函数表示接收到请求之后做的事情 </span></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;  </span><br><span class="line">    <span class="comment">//req 参数表示请求，res 表示响应  </span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"服务器接收到了请求"</span> + req.url);  </span><br><span class="line">    res.end();   </span><br><span class="line">    <span class="comment">//End方法使Web服务器停止处理脚本并返回当前结果 </span></span><br><span class="line">&#125;); </span><br><span class="line"><span class="comment">//监听端口 </span></span><br><span class="line">server.listen(<span class="number">3000</span>,<span class="string">"127.0.0.1"</span>);</span><br></pre></td></tr></table></figure>
+<p>设置一个响应头：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html;charset=UTF8"</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>我们现在来看一下 req 里面能够使用的东西。</p>
+<p>最关键的就是 <code>req.url 属性，表示用户的请求 URL 地址</code>。<code>所有的路由设计，都是通过 req.url 来实现的</code>。 我们比较关心的不是拿到 URL，而是识别这个 URL。</p>
+<p>识别 URL，用到了下面的 url 模块 ：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url.parse()   <span class="comment">//解析URL </span></span><br><span class="line">url.format(urlObject)  <span class="comment">//是上面 url.parse()操作的逆向操作 </span></span><br><span class="line">url.resolve(<span class="keyword">from</span>, to)  <span class="comment">//添加或者替换地址</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash</span></span><br><span class="line">Url &#123;</span><br><span class="line">    protocol: <span class="string">'https:'</span>, <span class="comment">// 协议</span></span><br><span class="line">        slashes: <span class="literal">true</span>,</span><br><span class="line">        auth: <span class="string">'user:pass'</span>, <span class="comment">// 用户名密码</span></span><br><span class="line">        host: <span class="string">'sub.host.com:8080'</span>, <span class="comment">// host主机名</span></span><br><span class="line">        port: <span class="string">'8080'</span>, <span class="comment">// 端口号</span></span><br><span class="line">        hostname: <span class="string">'sub.host.com'</span>, <span class="comment">// 主机名不带端口号</span></span><br><span class="line">        hash: <span class="string">'#hash'</span>, <span class="comment">// 哈希值</span></span><br><span class="line">        search: <span class="string">'?query=string'</span>,<span class="comment">// 查询字符串</span></span><br><span class="line">        query: <span class="string">'query=string'</span>, <span class="comment">// 请求参数</span></span><br><span class="line">        pathname: <span class="string">'/p/a/t/h'</span>, <span class="comment">// 路径名</span></span><br><span class="line">        path: <span class="string">'/p/a/t/h?query=string'</span>, <span class="comment">// 带查询的路径名</span></span><br><span class="line">        href: <span class="string">'https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'</span> <span class="comment">// 原字符串本身</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1、url.parse()</p>
+<p>例子1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.url);</span><br><span class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html;charset=UTF-8"</span>&#125;);</span><br><span class="line">    res.write(<span class="string">'Hello World.'</span>);</span><br><span class="line">    res.end();</span><br><span class="line">&#125;).listen(<span class="number">8888</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:8888/'</span>);</span><br><span class="line"><span class="comment">//输入localhost:8888                 得到: /       /favicon.ico</span></span><br><span class="line"><span class="comment">//输入localhost:8888/news            得到: /news   /favicon.ico</span></span><br><span class="line"><span class="comment">//输入localhost:8888/news?aid=123    得到: /news?aid=123    /favicon.ico</span></span><br></pre></td></tr></table></figure>
+<p>例子2</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line"><span class="comment">// 输入localhost:8888/news?aid=123&amp;cid=3 拿到aid和cid</span></span><br><span class="line"><span class="comment">// req.url 获取浏览器url输入的信息</span></span><br><span class="line"><span class="comment">// url.parse()第二个参数是true的时候，表示把get传值转换成对象</span></span><br><span class="line">    <span class="built_in">console</span>.log(url.parse(req.url,<span class="literal">true</span>).query.aid); <span class="comment">// 获取url的get传值</span></span><br><span class="line">    <span class="built_in">console</span>.log(url.parse(req.url,<span class="literal">true</span>).query.cid); <span class="comment">// 获取url的get传值</span></span><br><span class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html;charset=UTF-8"</span>&#125;);</span><br><span class="line">    res.write(<span class="string">'Hello World.'</span>);</span><br><span class="line">    res.end();</span><br><span class="line">&#125;).listen(<span class="number">8888</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:8888/'</span>);</span><br></pre></td></tr></table></figure>
+<p>2、url.format(urlObject)    一般用不着</p>
+<p>3、url.resolve()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;url.resolve(&apos;http://example.com/&apos;,&apos;/one&apos;);</span><br><span class="line">&apos;http://example.com/one&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="三-nodejs自启动工具nodemon">三、Nodejs自启动工具nodemon</h2>
+<p>1、全局安装nodemon</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nodemon</span><br></pre></td></tr></table></figure>
+<p>2、使用</p>
+<p>以前要么是 node app，要么是npm start，有了nodemon以后，启动程序直接进入根目录，nodemon就可以了。</p>
+<p>修改文件后，会自动重启。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Elaine Zhong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Elaine Zhong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node-js/" rel="tag"># node.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/01nodejs-introduction/" rel="next" title="01_nodejs_introduction">
+                <i class="fa fa-chevron-left"></i> 01_nodejs_introduction
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -349,8 +573,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -428,6 +661,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Node.js—http模块、url模块、nodemon工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-node-js创建第一个应用"><span class="nav-number">1.1.</span> <span class="nav-text">一、Node.js创建第一个应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-http-模块-url-模块"><span class="nav-number">1.2.</span> <span class="nav-text">二、HTTP 模块、URL 模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-nodejs自启动工具nodemon"><span class="nav-number">1.3.</span> <span class="nav-text">三、Nodejs自启动工具nodemon</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
