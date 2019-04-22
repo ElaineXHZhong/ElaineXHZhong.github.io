@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="node.js,">
+  <meta name="keywords" content="linux,">
 
 
 
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="03-CommonJS和Nodejs模块、自定义模块">
-<meta name="keywords" content="node.js">
+<meta name="description" content="01-Ubuntu配置">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="03_user_defined_module">
-<meta property="og:url" content="http://yoursite.com/2019/04/22/nodejs-03-user-defined-module/index.html">
+<meta property="og:title" content="01_ubuntu_configuration">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/linux-01-ubuntu-configuration/index.html">
 <meta property="og:site_name" content="Elaine Zhong">
-<meta property="og:description" content="03-CommonJS和Nodejs模块、自定义模块">
+<meta property="og:description" content="01-Ubuntu配置">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://adrianmejia.com/images/node-modules-large.png">
-<meta property="og:updated_time" content="2019-04-22T04:44:08.938Z">
+<meta property="og:image" content="http://www.youthvillage.co.za/wp-content/uploads/2013/09/ubuntu-logo.jpg">
+<meta property="og:updated_time" content="2019-04-22T10:31:07.594Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="03_user_defined_module">
-<meta name="twitter:description" content="03-CommonJS和Nodejs模块、自定义模块">
-<meta name="twitter:image" content="https://adrianmejia.com/images/node-modules-large.png">
+<meta name="twitter:title" content="01_ubuntu_configuration">
+<meta name="twitter:description" content="01-Ubuntu配置">
+<meta name="twitter:image" content="http://www.youthvillage.co.za/wp-content/uploads/2013/09/ubuntu-logo.jpg">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/22/nodejs-03-user-defined-module/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/linux-01-ubuntu-configuration/">
 
 
 
 
 
-  <title>03_user_defined_module | Elaine Zhong</title>
+  <title>01_ubuntu_configuration | Elaine Zhong</title>
   
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/nodejs-03-user-defined-module/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/linux-01-ubuntu-configuration/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Elaine Zhong">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">03_user_defined_module</h1>
+          <h1 class="post-title" itemprop="name headline">01_ubuntu_configuration</h1>
         
 
         <div class="post-meta">
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T12:40:10+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T18:14:53+08:00">
                 2019-04-22
               </time>
             
@@ -354,8 +354,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node-js/" itemprop="url" rel="index">
-                    <span itemprop="name">node.js</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -372,8 +372,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/22/nodejs-03-user-defined-module/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/nodejs-03-user-defined-module/" itemprop="commentCount"></span>
+                <a href="/2019/04/22/linux-01-ubuntu-configuration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/linux-01-ubuntu-configuration/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,7 +381,7 @@
 
           
           
-             <span id="/2019/04/22/nodejs-03-user-defined-module/" class="leancloud_visitors" data-flag-title="03_user_defined_module">
+             <span id="/2019/04/22/linux-01-ubuntu-configuration/" class="leancloud_visitors" data-flag-title="01_ubuntu_configuration">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -412,37 +412,86 @@
       
 
       
-        <h1>03-CommonJS和Nodejs模块、自定义模块</h1>
-<p><img src="https://adrianmejia.com/images/node-modules-large.png" alt></p>
+        <h1>01-Ubuntu配置</h1>
+<p><img src="http://www.youthvillage.co.za/wp-content/uploads/2013/09/ubuntu-logo.jpg" alt></p>
 <a id="more"></a>
-<h2 id="一-什么是-commonjs？">一、什么是 CommonJs？</h2>
-<p>JavaScript 是一个强大的<code>面向对象语言</code>，它有很多快速高效的解释器。然而， JavaScript 标准定义的 API 是为了构建基于浏览器的应用程序。并没有制定一个用于更广泛的应用程序的标准库。CommonJS 规范的提出,主要是为了弥补当前 JavaScript 没有标准的缺陷。它的终 极目标就是：提供一个类似 Python，Ruby 和 Java 语言的标准库,而不只是停留在小脚本程序的阶段。用 CommonJS API 编写出的应用，不仅可以利用 JavaScript 开发客户端应用，而且还可以编写以下应用。</p>
-<p>•服务器端 JavaScript 应用程序。 （nodejs）</p>
-<p>•命令行工具。</p>
-<p>•桌面图形界面应用程序。</p>
-<p><code>CommonJS 就是模块化的标准</code>，nodejs就是 CommonJS（模块化）的实现。</p>
-<h2 id="二-nodejs-中的模块化">二、Nodejs 中的模块化</h2>
-<p>Node 应用由模块组成，采用 CommonJS 模块规范。</p>
-<p>1、 在 Node中，模块分为两类:</p>
-<p>一类是 <code>Node 提供的模块,称为核心模块</code>；另一类是<code>用户编写的模块，称为文件模块</code>。</p>
-<p>• 核心模块部分在 Node 源代码的编译过程中，编译进了二进制执行文件。在 Node 进程启动时，部分核心模块就被直接加载进内存中，所以这部分核心模块引入时，文件定位和编译执行这两个步骤可以省略掉，并且在路径分析中优先判断，所以它的加载速度是最快的。 如：HTTP 模块 、URL 模块、Fs模块都是 nodejs 内置的核心模块，可以直接引入使用。</p>
-<p>• 文件模块则是在运行时动态加载，需要完整的路径分析、文件定位、编译执行过程、 速度相比核心模块稍微慢一些，但是用的非常多。这些模块需要我们自己定义。接下来我们看一下 nodejs 中的<code>自定义模块</code>。</p>
-<p>2、CommonJS（Nodejs）中自定义模块的规定：</p>
-<p>（1）我们可以把公共的功能抽离成为一个单独的 js 文件作为一个模块，默认情况下面这 个<code>模块里面的方法或者属性，外面是没法访问的</code>。如果要让外部可以访问模块里面的方法或 者属性，就必须在模块里面<code>通过exports或者module.exports</code>暴露属性或者方法。</p>
-<p>（2）在需要使用这些模块的文件中，<code>通过require的方式引入</code>这个模块。这个时候就可以 使用模块里面暴露的属性和方法。</p>
-<p>3、 定义使用模块：</p>
-<p><font color="#9A32CD"><strong>tools.js</strong></font></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个 tools.js 的模块 </span></span><br><span class="line"><span class="comment">// 模块定义 </span></span><br><span class="line"><span class="keyword">var</span> tools = &#123; </span><br><span class="line">    sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hello NodeJS'</span>; </span><br><span class="line">    &#125;, </span><br><span class="line">    add: <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;     </span><br><span class="line">        <span class="keyword">return</span> x + y; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;; </span><br><span class="line"><span class="comment">// 模块接口的暴露 </span></span><br><span class="line"><span class="comment">// module.exports = tools ; </span></span><br><span class="line">exports.sayHello = tools.sayHello; </span><br><span class="line">exports.add = tools.add;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span> (<span class="string">'http'</span>); </span><br><span class="line"> <span class="comment">// 引入自定义的 tools.js 模块 </span></span><br><span class="line"><span class="keyword">var</span> tools= <span class="built_in">require</span> (<span class="string">'./tools'</span>); </span><br><span class="line">tools.sayHello();  <span class="comment">//使用模块</span></span><br></pre></td></tr></table></figure>
-<p>两种方法：方法一</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = tools;</span><br><span class="line">-----------------------</span><br><span class="line"><span class="keyword">var</span> tools = <span class="built_in">require</span>(<span class="string">'./tools'</span>);</span><br><span class="line">tools.sayHello();</span><br><span class="line">tools.add();</span><br></pre></td></tr></table></figure>
-<p>​		      方法二</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">exports.sayHello = tools.sayHello;</span><br><span class="line">exports.add = tools.add;</span><br><span class="line">---------------------------------</span><br><span class="line"><span class="keyword">var</span> tools = <span class="built_in">require</span>(<span class="string">'./tools'</span>);</span><br><span class="line">tools.sayHello();</span><br><span class="line">tools.add();</span><br></pre></td></tr></table></figure>
-<p>由此想到的构造一个模块的方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tools = &#123;</span><br><span class="line">    tools01:&#123;</span><br><span class="line">        hello:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        elaine:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'elaine'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    tools02 :&#123;</span><br><span class="line">        hi:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'hi'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        hongkong:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'hongkong'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = tools;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tools = <span class="built_in">require</span>(<span class="string">'./01'</span>);</span><br><span class="line">tools.tools01.hello();</span><br><span class="line">tools.tools02.hi();</span><br></pre></td></tr></table></figure>
-<h2 id="三-npm-init-生成-package-json">三、npm init 生成 package.json</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<ul>
+<li>cat /etc/issue  查看内核版本</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~$ cat /etc/issue</span><br><span class="line">Ubuntu <span class="number">16.04</span><span class="number">.6</span> LTS \n \l</span><br></pre></td></tr></table></figure>
+<ul>
+<li>sudo lsb_release -a  查看内核版本(详细信息)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~$ sudo lsb_release -a</span><br><span class="line">Distributor ID:    Ubuntu</span><br><span class="line">Description:    Ubuntu <span class="number">8.04</span></span><br><span class="line">Release:    <span class="number">8.04</span></span><br><span class="line">Codename:    hardy</span><br></pre></td></tr></table></figure>
+<p>查看系统版本号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ cat /proc/version</span><br></pre></td></tr></table></figure>
+<ul>
+<li>uname -r    查看内核版本号</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~$ uname -r </span><br><span class="line"><span class="number">4.15</span><span class="number">.0</span><span class="number">-46</span>-generic</span><br></pre></td></tr></table></figure>
+<ul>
+<li>pwd   显示当前路径</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~$ pwd</span><br><span class="line">/homt/acs</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ls 列出目标目录中所有的子目录和文件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">常用参数：</span><br><span class="line">-a   -all：列出目录下的所有文件，包括以 . 开头的隐含文件</span><br><span class="line">-A   同-a，但不列出“.”(表示当前目录)和“..”(表示当前目录的父目录)</span><br><span class="line">-c   配合 -lt：根据ctime排序及显示ctime (文件状态最后更改的时间)</span><br><span class="line">	 配合 -l：显示ctime但根据名称排序否则：根据ctime排序</span><br><span class="line">-C   每栏由上至下列出项目</span><br><span class="line">-color[=WHEN]  控制是否使用色彩分辨文件。WHEN 可以是<span class="string">'never'</span>、<span class="string">'always'</span>或<span class="string">'auto'</span>其中之一</span><br><span class="line">-d   –directory 将目录象文件一样显示，而不是显示其下的文件</span><br><span class="line">-D   –dired 产生适合Emacs的dired模式使用的结果</span><br><span class="line">-h   –human-readable 以容易理解的格式列出文件大小</span><br><span class="line">-i   –inode 印出每个文件的inode号</span><br><span class="line">-m   所有项目以逗号分隔，并填满整行行宽</span><br><span class="line">-o   类似 -l,显示文件的除组信息外的详细信息</span><br><span class="line">-r   –reverse 依相反次序排列</span><br><span class="line">-R   –recursive 同时列出所有子目录层</span><br><span class="line">-s  –size 以块大小为单位列出所有文件的大小</span><br><span class="line">-S  根据文件大小排序</span><br><span class="line">-t  以文件修改时间排序</span><br><span class="line">-u  配合-lt:显示访问时间而且依访问时间排序</span><br><span class="line">    配合 -l:显示访问时间但根据名称排序</span><br><span class="line">    否则：根据访问时间排序</span><br><span class="line">-l  每行只列出一个文件</span><br></pre></td></tr></table></figure>
+<p>常用范例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">例一：列出/home/peidachang文件夹下的所有文件和目录的详细资料</span><br><span class="line">命令：ls -l -R /home/peidachang</span><br><span class="line">命令：ls -lR /home/peidachang 和上面的命令形式执行的结果是完全一样的</span><br><span class="line"></span><br><span class="line">例二：列出当前目录中所有以“t”开头的目录的详细内容</span><br><span class="line">命令：ls -l t*</span><br><span class="line"></span><br><span class="line">例三：只列出文件下的子目录</span><br><span class="line">命令：ls -F /opt/soft |grep /$       列出 /opt/soft 文件下面的子目录</span><br><span class="line">命令：ls -l /opt/soft | grep <span class="string">"^d"</span>    列出 /opt/soft 文件下面的子目录详细情况</span><br><span class="line"></span><br><span class="line">例四：列出目前工作目录下所有名称是s 开头的档案，愈新的排愈后面</span><br><span class="line">命令：ls -ltr s*</span><br><span class="line">    </span><br><span class="line">例五：列出目前工作目录下所有档案及目录;目录于名称后加<span class="string">"/"</span></span><br><span class="line">命令：ls -AF</span><br><span class="line"></span><br><span class="line">例七: 在ls中列出文件的绝对路径</span><br><span class="line">命令：ls | sed <span class="string">"s:^:`pwd`/:"</span></span><br><span class="line"></span><br><span class="line">例九：列出当前目录下的所有文件（包括隐藏文件）的绝对路径， 对目录不做递归</span><br><span class="line">命令：find $PWD -maxdepth <span class="number">1</span> | xargs ls -ld</span><br><span class="line"></span><br><span class="line">例十：递归列出当前目录下的所有文件（包括隐藏文件）的绝对路径</span><br><span class="line">命令： find $PWD | xargs ls -ld </span><br><span class="line"></span><br><span class="line">例十一：指定文件时间输出格式</span><br><span class="line">命令：ls -tl --time-style=full-iso</span><br><span class="line">命令：ls -ctl --time-style=long-iso</span><br></pre></td></tr></table></figure>
+<ul>
+<li>rm   删除一个目录中的一个或多个文件或目录</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">实例一：删除文件file，系统会先询问是否删除</span><br><span class="line">命令：rm 文件名</span><br><span class="line"></span><br><span class="line">实例二：强行删除file，系统不再提示</span><br><span class="line">命令：rm -f log1.log</span><br><span class="line"></span><br><span class="line">实例三：删除任何.log文件；删除前逐一询问确认 </span><br><span class="line">命令：rm -i *.log</span><br><span class="line"></span><br><span class="line">实例四：将test1子目录及子目录中所有档案删除</span><br><span class="line">命令：rm -r test1</span><br><span class="line"></span><br><span class="line">实例五：rm -rf test2命令会将test2子目录及子目录中所有档案删除,并且不用一一确认</span><br><span class="line">命令：rm -rf test2 </span><br><span class="line"></span><br><span class="line">实例六：删除以 -f 开头的文件</span><br><span class="line">命令：rm -- -f</span><br></pre></td></tr></table></figure>
+<ul>
+<li>code --verbose  启动VSCode</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ code --verbose</span><br></pre></td></tr></table></figure>
+<h4 id="nodejs">nodejs</h4>
+<ol>
+<li>
+<p>ubuntu-make一键安装开发环境(大大精简安装开发环境的过程)</p>
+<p>相比于Windows，Linux下安装软件已经非常简便了，一般只需要一句命令，或者通过 Ubuntu软件中心（Ubuntu Software Center）。Ubuntu Developer Tools Center“Ubuntu开发者工具中心”是在Ubuntu 14.10版本中出现的，到了15.04版本就改名为ubuntu-make了。</p>
+<p>ubuntu-make就是旨在方便开发者安装软件开发环境的这么一个命令行工具，让你可以在命令行中输入一行简单的代码，然后敲一下回车键，即可开始安装你所指定的开发环境。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(1)安装最新版ubuntu-make</span><br><span class="line"># 将ubuntu-make加入apt软件仓库的列表</span><br><span class="line">$ sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make</span><br><span class="line">#升级apt的软件仓库，为了加入刚才的ubuntu-make</span><br><span class="line">$ sudo apt update</span><br><span class="line">#安装ubuntu-make</span><br><span class="line">$ sudo apt install ubuntu-make</span><br><span class="line">(2)用ubuntu-make一键安装所需开发环境</span><br><span class="line">$ umake --help  # umake的帮助页面</span><br><span class="line">$ man umake  # 用man（手册manuel的缩写）命令来查看umake用法</span><br><span class="line">$ info umake  # umake的信息（info）页面</span><br><span class="line">#基本的安装开发环境的方法是：umake 大类 小类 例如：umake android android-studio</span><br><span class="line">#如果没有小类的话，那就是：umake 大类 例如：umake go</span><br><span class="line"># 安装Visual Studio</span><br><span class="line">$ umake ide visual-studio-code</span><br><span class="line">$ umake web visual-studio-code（会错误）</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在抛出一堆要求和条件后，它会询问你是否确认安装Visual Studio Code。输入‘a’来确定，</li>
+<li>确定之后，安装程序会开始下载并安装。安装完成后，你可以发现Visual Studio Code 图标已经出现在了<a href="https://www.baidu.com/s?wd=Unity%E5%90%AF%E5%8A%A8%E5%99%A8&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">Unity启动器</a>上。点击图标开始运行！安装好后也可以直接在搜索里面找到并锁定到任务栏就可以了。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#卸载Visual Studio Code</span><br><span class="line">$umake web visual-studio-code --remove</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>使用nodejs在ubuntu上写一个程序</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir myapp</span><br><span class="line">$ cd myapp</span><br><span class="line">$ npm init</span><br><span class="line">$ npm install express --save</span><br><span class="line">$ node app.js</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>
+<p>查看ubuntu已经安装的软件</p>
+<p>在“search your computer”中输入“ubuntu software”，然后点击“Installed”。</p>
+</li>
+<li>
+<p>重启计算机</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo reboot</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>ubuntu的垃圾箱trash</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~<span class="regexp">/.local/</span>share/Trash</span><br><span class="line">$ cd files </span><br><span class="line">$ ls (files目录下会看到在Trash中删除的文件)</span><br><span class="line">$ sudo rm -rf /home/yourname/.local/share/Trash/ (命令行清理)</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>ubuntu安装nodejs</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)ubuntu源码安装nodejs</span><br><span class="line">#在Github上获取Node.js源码：</span><br><span class="line">$ sudo git clone https:<span class="comment">//github.com/nodejs/node.git</span></span><br><span class="line">#修改目录权限：</span><br><span class="line">$ sudo chmod -R <span class="number">755</span> node</span><br><span class="line">#使用 ./configure 创建编译文件，并按照：</span><br><span class="line">$ cd node</span><br><span class="line">$ sudo ./configure</span><br><span class="line">$ sudo make</span><br><span class="line">$ sudo make install</span><br><span class="line">#查看 node 版本：</span><br><span class="line">$ node --version</span><br><span class="line">(<span class="number">2</span>)Ubuntu apt-<span class="keyword">get</span>命令安装</span><br><span class="line">$ sudo apt-<span class="keyword">get</span> install nodejs</span><br><span class="line">$ sudo apt-<span class="keyword">get</span> install npm</span><br><span class="line">$ sudo apt install nodejs-legacy</span><br></pre></td></tr></table></figure>
+<h4 id="mysql">mysql</h4>
+<p>1、查看版本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select version();    查看版本</span><br><span class="line">+-----------+</span><br><span class="line">| version() |</span><br><span class="line">+-----------+</span><br><span class="line">| <span class="number">5.7</span><span class="number">.25</span>    |</span><br><span class="line">+-----------+</span><br></pre></td></tr></table></figure>
+<h4 id="ubunru16-04安装mysql5-7">Ubunru16.04安装mysql5.7</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> update</span><br><span class="line">sudo apt-<span class="keyword">get</span> install mysql-server</span><br><span class="line">此时如果提示依赖不足，那么需要运行下面命令解决依赖问题</span><br><span class="line">sudo apt-<span class="keyword">get</span> install -f</span><br><span class="line">完成后再次运行sudo apt-<span class="keyword">get</span> install mysql-server。如果没出现依赖问题，那么就不需要使用此命令。</span><br><span class="line">安装过程会提示输入数据库的登录名和密码，输入即可</span><br><span class="line">通过这种方式安装好之后开机自启动都已经配置好，和命令行上的环境变量，无需手动配置</span><br><span class="line">安装好之后会创建如下目录：</span><br><span class="line"></span><br><span class="line">数据库目录：/var/lib/mysql/ </span><br><span class="line">配置文件：/usr/share/mysql（命令及配置文件） ，/etc/mysql（如：my.cnf）</span><br><span class="line">相关命令：/usr/bin(mysqladmin mysqldump等命令) 和/usr/sbin</span><br><span class="line">启动脚本：/etc/init.d/mysql（启动脚本文件mysql的目录）</span><br><span class="line">测试：</span><br><span class="line">#服务启动后端口查询</span><br><span class="line">sudo netstat -anp | grep mysql</span><br><span class="line">#服务管理</span><br><span class="line">#启动</span><br><span class="line">sudo service mysql start</span><br><span class="line">#停止</span><br><span class="line">sudo service mysql stop</span><br><span class="line">#服务状态</span><br><span class="line">sudo service mysql status</span><br><span class="line">#连接数据库</span><br><span class="line">mysql -h 127.0.0.1 -P 3306 -uroot -p123456</span><br><span class="line">#-h为远程IP，-P为端口号，-u为用户名，-p为密码</span><br><span class="line">#测试SQL</span><br><span class="line">show databases;</span><br><span class="line">#首先使用以下命令删除MySQL服务器：</span><br><span class="line">sudo apt-<span class="keyword">get</span> remove mysql-server</span><br><span class="line">#然后，删除随MySQL服务器自动安装的任何其他软件：</span><br><span class="line">sudo apt-<span class="keyword">get</span> autoremove</span><br><span class="line">#卸载其他组件：</span><br><span class="line">sudo apt-<span class="keyword">get</span> remove &lt;&lt;package-name&gt;&gt;</span><br><span class="line">#查看从MySQL APT存储库安装的软件包列表：</span><br><span class="line">dpkg -l | grep mysql | grep ii</span><br></pre></td></tr></table></figure>
+<p>mysql</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数据库</span></span><br><span class="line">~$ mysql -u root -p</span><br><span class="line">(此处输入密码)</span><br><span class="line">mysql&gt;create database virtual_bank;</span><br><span class="line">    -&gt;show databases;</span><br><span class="line">    -&gt;use virtual_bank;</span><br><span class="line">    -&gt;create table <span class="keyword">if</span> not exists user(</span><br><span class="line">    -&gt;id int(<span class="number">11</span>) not <span class="literal">null</span> primary key auto_increment,</span><br><span class="line">    -&gt;email varchar(<span class="number">255</span>),</span><br><span class="line">    -&gt;password varchar(<span class="number">255</span>),</span><br><span class="line">    -&gt;createdAt timestamp <span class="keyword">default</span> current_timestamp,</span><br><span class="line">    -&gt;image varchar(<span class="number">255</span>),</span><br><span class="line">    -&gt;audio varchar(<span class="number">255</span>));</span><br><span class="line">Query OK,<span class="number">0</span> rows affected (<span class="number">0.04</span> sec)</span><br><span class="line">mysql&gt;show tables;</span><br><span class="line">+------------------------+</span><br><span class="line">| Tables_in_virtual_bank |</span><br><span class="line">+------------------------+</span><br><span class="line">| user                   |</span><br><span class="line">+------------------------+</span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="keyword">set</span> (0.00 sec)</span><br><span class="line">mysql&gt;desc user;</span><br><span class="line">+-----------+--------------+------+-----+-------------------+----------------+</span><br><span class="line">| Field     | Type         | Null | Key | Default           | Extra          |</span><br><span class="line">+-----------+--------------+------+-----+-------------------+----------------+</span><br><span class="line">| id        | int(11)      | NO   | PRI | NULL              | auto_increment |</span><br><span class="line">| email     | varchar(255) | YES  |     | NULL              |                |</span><br><span class="line">| password  | varchar(255) | YES  |     | NULL              |                |</span><br><span class="line">| createdAt | timestamp    | YES  |     | CURRENT_TIMESTAMP |                |</span><br><span class="line">| image     | varchar(255) | YES  |     | NULL              |                |</span><br><span class="line">| audio     | varchar(255) | YES  |     | NULL              |                |</span><br><span class="line">+-----------+--------------+------+-----+-------------------+----------------+</span><br><span class="line">6 rows in <span class="keyword">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>ubuntu下解决443端口被占用</p>
+<p>​<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">１. 根据端口查找进程			sudo lsof -i:端口号</span><br><span class="line">２. 杀掉进程				   sudo kill PID号</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -489,7 +538,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/node-js/" rel="tag"># node.js</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
         </div>
       
@@ -502,8 +551,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/nodejs-02-http-module/" rel="next" title="02_http_module">
-                <i class="fa fa-chevron-left"></i> 02_http_module
+              <a href="/2019/04/22/nodejs-13-Nodemailer/" rel="next" title="13-Nodemailer">
+                <i class="fa fa-chevron-left"></i> 13-Nodemailer
               </a>
             
           </div>
@@ -512,8 +561,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/22/nodejs-04-npm/" rel="prev" title="04_npm">
-                04_npm <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/22/nodejs-14-Restful-API/" rel="prev" title="14_Restful_API">
+                14_Restful_API <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -667,7 +716,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">03-CommonJS和Nodejs模块、自定义模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-什么是-commonjs？"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是 CommonJs？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-nodejs-中的模块化"><span class="nav-number">1.2.</span> <span class="nav-text">二、Nodejs 中的模块化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-npm-init-生成-package-json"><span class="nav-number">1.3.</span> <span class="nav-text">三、npm init 生成 package.json</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">01-Ubuntu配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nodejs"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">nodejs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">mysql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ubunru16-04安装mysql5-7"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">Ubunru16.04安装mysql5.7</span></a></li></ol></li></ol></div>
             
 
           </div>

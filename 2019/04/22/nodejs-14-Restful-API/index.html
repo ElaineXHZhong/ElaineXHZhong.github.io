@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="node.js,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="14-Node.js RESTful API">
+<meta name="keywords" content="node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="14_Restful_API">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/nodejs-14-Restful-API/index.html">
+<meta property="og:site_name" content="Elaine Zhong">
+<meta property="og:description" content="14-Node.js RESTful API">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://total-qa.com/wp-content/uploads/2017/09/rest-api-basics.png">
+<meta property="og:updated_time" content="2019-04-22T10:43:33.634Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="14_Restful_API">
+<meta name="twitter:description" content="14-Node.js RESTful API">
+<meta name="twitter:image" content="http://total-qa.com/wp-content/uploads/2017/09/rest-api-basics.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/nodejs-14-Restful-API/">
+
+
+
+
+
+  <title>14_Restful_API | Elaine Zhong</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Elaine Zhong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">世界是趋于混沌的，我们做的是减少熵</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+
+
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/nodejs-14-Restful-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Elaine Zhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/21.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elaine Zhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">14_Restful_API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T18:35:35+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">node.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/22/nodejs-14-Restful-API/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/nodejs-14-Restful-API/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/22/nodejs-14-Restful-API/" class="leancloud_visitors" data-flag-title="14_Restful_API">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1>14-Node.js RESTful API</h1>
+<p><img src="http://total-qa.com/wp-content/uploads/2017/09/rest-api-basics.png" alt></p>
+<a id="more"></a>
+<h5 id="什么是rest">什么是REST?</h5>
+<p>REST即表述性状态传递（英文：Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的<font color="#CD5C5C">一种软件架构风格。表述性状态转移是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是RESTful。</font></p>
+<p>注意，REST是设计风格而不是标准。REST通常基于使用HTTP，URI，和XML（标准通用标记语言下的一个子集）以及HTML（标准通用标记语言下的一个应用）这些现有的广泛流行的协议和标准。REST 通常使用 <font color="#CD5C5C">JSON 数据格式</font>。</p>
+<h5 id="什么是rest-api">什么是REST API?</h5>
+<p>要解释什么是REST，你应该先了解什么是API（Application Programming Interface，应用程序编程接口），形象一点说就像是腾讯、阿里巴巴这些公司提供的API接口，我们可以编写一个软件去跟这个API接口连接或交互。</p>
+<p>举个栗子，比如你可以用手机的某些软件分享内容到微信朋友圈，这个软件就是与微信的API进行了交互。知道了API，就容易理解REST了。REST是什么呢？它是一种架构风格，是腾讯、阿里巴巴等公司建立API时要遵守的一种风格，当然也有其他的风格可以用。</p>
+<p>要具体解析什么是REST，我们还必须提到Web，因为REST是以Web为平台的。</p>
+<p>Web是什么: 分布式信息系统为超文本文件和其他对象（资源）提供访问入口。资源是Web架构的<strong>关键点,需要 3个操作</strong>：识别(identify) 表示(represent) 交互(interact with)。通过这三个操作，又引出三个概念：uri（统一资源标识符包括url和urn）识别资源；representation （例如html，xml，图片，视频等等）表示资源；通过协议（包括http，ftp等等）与资源进行交互。</p>
+<p>所以REST就是选择通过使用http协议和uri，利用client/server model对资源进行CRUD (Create/Read/Update/Delete)增删改查操作。</p>
+<h5 id="为什么要使用rest风格？">为什么要使用REST风格？</h5>
+<p>REST风格的限制及其优点：</p>
+<ol>
+<li>
+<p>客户-服务器（Client-Server）客户端服务器分离；</p>
+<p>优点：提高用户界面的便携性（操作简单），简化服务器提高可伸缩性（高性能，低成本），允许组件分别优化（可以让服务端和客户端分别进行改进和优化）。</p>
+</li>
+<li>
+<p>无状态（Stateless）客户端的每个请求要包含服务器所需要的所有信息；</p>
+<p>优点：提高可见性（可以单独考虑每个请求），提高了可靠性（更容易从局部故障中修复），提高了可靠性（更容易从局部故障中修复）。</p>
+</li>
+<li>
+<p>缓存（Cachable）服务器返回信息必须被标记是否可以缓存，如果缓存，客户端可能会重用之前的信息发送请求；</p>
+<p>优点：减少交互次数，减少交互的平均延迟。</p>
+</li>
+<li>
+<p>分层系统（Layered System）系统组件不需要知道与他交流组件之外的事情。封装服务，引入中间层；</p>
+<p>优点：限制了系统的复杂性，提高可扩展性。</p>
+</li>
+<li>
+<p>统一接口（Uniform Interface）；</p>
+<p>优点：提高交互的可见性，鼓励单独改善组件。</p>
+</li>
+<li>
+<p>支持按需代码（Code-On-Demand 可选）；</p>
+<p>优点：提高可扩展性…</p>
+</li>
+</ol>
+<h5 id="举例说明什么是representation-什么是state-以及什么是representation-state-transfer">举例说明什么是Representation，什么是State，以及什么是Representation State Transfer</h5>
+<h6 id="representation">Representation</h6>
+<p>例如我订阅了一个人的博客，想要获取他发表的所有文章（这里『他发表的所有文章』就是一个<strong>资源Resource</strong>）。于是我就向他的服务发出请求，说『我要获取你发表的所有文章，最好是atom格式的』，这时候服务器向你返回了atom格式的文章列表第一页（这里『atom格式的文章列表』就是<strong>表征Representation</strong>）。</p>
+<h6 id="state">State</h6>
+<p>你看到了第一页的页尾，想要看第二页，这时候有趣的事情就来了。如果服务器记录了应用的状态（stateful），那么你只要向服务询问『我要看下一页』，那么服务器自然就会返回第二页。类似的，如果你当前在第二页，想服务器请求『我要看下一页』，那就会得到第三页。但是REST的服务器恰恰是无状态的（stateless），服务器并没有保持你当前处于第几页，也就无法响应『下一页』这种具有状态性质的请求。因此客户端需要去维护当前应用的状态（application state），也就是『如何获取下一页资源』。当然，『下一页资源』的业务逻辑必然是由服务端来提供。服务器在文章列表的atom表征中加入一个URI超链接（hyper link），指向下一页文章列表对应的资源。客户端就可以使用<strong>统一接口（Uniform Interface）<strong>的方式，从这个URI中获取到他想要的下一页文章列表资源。上面的『能够进入下一页』就是应用的</strong>状态（State）。</strong></p>
+<h6 id="representation-state-transfer">Representation State Transfer</h6>
+<p>服务器把『能够进入下一页』这个状态以atom表征形式**传输（Transfer）<strong>给客户端就是</strong>表征状态传输（REpresentational State Transfer）**这个概念。</p>
+<p>举个具体API的例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">// 请求</span><br><span class="line">GET /posts HTTP/1.1</span><br><span class="line">Accept: application/atom+xml</span><br><span class="line"></span><br><span class="line">// 响应</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Type: application/atom+xml</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">feed</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2005/Atom"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Posts<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"http://example.org/posts"</span> <span class="attr">rel</span>=<span class="string">"self"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"http://example.org/posts?pn=2"</span> <span class="attr">rel</span>=<span class="string">"next"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>urn:uuid:60a76c80-d399-11d9-b91C-0003939e0af6<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">updated</span>&gt;</span>2003-12-13T18:30:02Z<span class="tag">&lt;/<span class="name">updated</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">entry</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Post XXX<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"http://example.org/post-xxx"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">updated</span>&gt;</span>2003-12-13T18:30:02Z<span class="tag">&lt;/<span class="name">updated</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">content</span> <span class="attr">type</span>=<span class="string">"xhtml"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is the post content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">content</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">entry</span>&gt;</span>...<span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">feed</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面atom格式中的多个<link>元素，它们分别定义了当前状态下合法的状态转移。</p>
+<p>例如，这是一个指向自己的链接，其中rel属性指定了状态转移的关系为自身。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"http://example.org/posts"</span> <span class="attr">rel</span>=<span class="string">"self"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这是下一页的链接，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"http://example.org/posts?pn=2"</span> <span class="attr">rel</span>=<span class="string">"next"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果当前不是第一页的话，就会有类似如下的链接来表示上一页，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"http://example.org/posts?pn=2"</span> <span class="attr">rel</span>=<span class="string">"prev"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>而这个是某一篇文章的链接，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"http://example.org/post-xxx"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>总结一下，就是：</p>
+<ol>
+<li>服务器生成包含状态转移的表征数据，用来响应客户端对于一个资源的请求；</li>
+<li>客户端借助这份表征数据，记录了当前的应用状态以及对应可转移状态的方式。</li>
+</ol>
+<p>为了要实现这一系列的功能，一个不可或缺的东西就是<strong>超文本（hypertext）<strong>或者说</strong>超媒体类型（hypermedia type）</strong>。这绝对不是一个简简单单的媒体类型（例如，JSON属性列表）可以做到的。</p>
+<h5 id="rest是怎么产生的？">REST是怎么产生的？</h5>
+<p>http是目前在互联网上使用最多的协议，没有之一。可是http的创始人一直都觉得，在过去10几年来，所有的人都在错误的使用Http.</p>
+<p>这句话怎么说呢？如果说你要删除一个数据，以往的做法通常是 delete/{id}。如果你要更新一个数据，可能是Post数据放Body，然后方法是 update/{id}， 或者是artichle/{id}?method=update。</p>
+<p>这种做法让Roy Fielding很暴燥，他觉得这个世界不该这样的，所有的人都在误解而且在严重错误的误解Http的设计初衷，好比是发明了火药却只用它来做烟花爆竹。那么正确的使用方式是什么呢？如果你要看Rest各种特性，你恐怕真的很难理解Rest，但是如果你看错误的使用http的人倒底儿了哪些错，什么是Rest就特别容易理解了。</p>
+<h6 id="七宗罪的第一条-混乱"><strong>七宗罪的第一条，混乱。</strong></h6>
+<p>一万个人心里有一万个Url的命名规则，Url是统一资源定位符，重点是资源。而很多人却把它当成了万金油，每一个独立的虚拟的网页都可以随意使用，各种操作都能够迭加。这是混乱的来源之一。</p>
+<h6 id="第二条-贪婪"><strong>第二条，贪婪。</strong></h6>
+<p>有状态和无状态全部混在一起。特别是在购物车或者是登录的应用中，经常刷新就丢失带来的用户体验简直棒棒哒。每一个请求并不能单独的响应一些功能，很多的功能混杂在一起里。</p>
+<p>这是人性贪婪的本质，也是各种Hack的起源，只要能够把问题解决掉，总会有人用他认为最方便的方式去解决问题，比如说汽车门把手坏掉了直接系根绳子当把手，emmmm这样确实很棒啊。</p>
+<h6 id="第三条-无序"><strong>第三条，无序。</strong></h6>
+<p>返回的结果往往是很随意，各种错误信息本来就是用Http的状态码构成的，可是很多人还是喜欢把错误信息返回在返回值中。最常见的就是Code和Message，当然对于这一点，我个人是保留疑问的，我的观点是，Http本身的错误和服务器的内部错误还是需要在不断层面分开的，不能混在一起。可是在大神眼里并非如此，这个再议。</p>
+<p>好了我编不下去了。那么怎么解决这些问题呢？强迫症患者的福音就是先颁规则，第一个规则就是明确Url是什么，该怎么用。</p>
+<p>就是所有的Url本质来讲，都应该是一种资源。一个独立的Url地址，就是对应一个独一无二的资源。怎么样？这种感觉是不是棒棒哒？一个冰淇淋，一个老师，一间房子，在Url上对应的都是一个资源，不会有多余的Url跟他对应，也不会表示有多个Url地址~~注意，这里点的是Url地址，并不是单独的参数，他就是一个/room/{room_id}这样的东西，举个栗子,/room/3242 这就表示3242号房间。</p>
+<p>这是一个清爽的世界啊，你想想，之前的Url是什么都要，我开房，可能是/open/room/3242 我要退房可能是/exit/3242/room，我要打理房间，可能是room/3242?method=clean.</p>
+<p>够了！这些乱七八糟的东西全够了，让世界回归清爽的本质，一间房，就是/room/3242 没有别的Url地址了。那我想要对这个资源有操作怎么办？</p>
+<p>这就是棒棒哒大神想出来的了，http有几种Method来着？get ,put ,post,delete，还有其他隐藏的4种。</p>
+<p>在过去的混乱世界里，经常用的就是Get和Post。如果不是因为Get不支持大数据传输，我想连Post都会有人使用。（想像一下Roy Fielding在愤怒的对着电脑屏幕喊，Http的Method一共有八个，你们为毛只逮着Get一只羊的毛薅薅薅薅薅）。</p>
+<p>而对资源最常见的操作是什么？CRUD，对不对，就是创建，读，更新，删除。再看Http的Method？是不是非常完美？其实也怪Fielding老爷子一开始命名不准确，如果刚开始就是把Get方法叫做Read，Put方法叫做Update，Post叫做Create这该多好。。</p>
+<p>你用一个Get，大家又发现没什么限制没什么所谓，又很难理解Put和Post的差别，法无禁止即可为啊，呃，老爷子不要瞪我，我瞎说的。</p>
+<p>总之，这四种方法够不够你浪？你有本事找出来更多的对资源的操作来啊，我还有4个Method没用过呢。如果这4个真的不够了，有什么问题，大不了我再重新更改http协议啊。</p>
+<p>其实简单说，对于Rest理解到这里就够了。后续的东西，都是在这一条基础上空想出来的，比强迫症更强迫症，当然，无状态我是百分百支持的。</p>
+<p>以上的各种表述可能不太准确，也纯属是我的意淫和各种小道资料，并未考据，但是凭良心讲，我是早就看不惯黑暗年代里的Url命名风格了，所以当时最早接触到Rest的时候，瞬间就找到了真爱，我靠，这不就是我一直想要的答案吗？但是我一直想的仅仅是命名规范，从来没有把自己的思考角度放在一个url就是一个资源，所有的操作都是对资源的更改而言的角度上啊。</p>
+<p>所以你能理解到的程度，更多的就是在于你要弄清楚你要解决的什么问题，如果你的问题只是理解Rest，恐怕你很理解，如果你的问题是怎么解决Url混乱的问题，你反而很快能弄懂了~</p>
+<h5 id="http方法">HTTP方法</h5>
+<p>以下为 REST 基本架构的四个方法：</p>
+<ul>
+<li><strong>GET</strong> - 用于获取数据。</li>
+<li><strong>PUT</strong> - 用于更新或添加数据。</li>
+<li><strong>DELETE</strong> - 用于删除数据。</li>
+<li><strong>POST</strong> - 用于添加数据。</li>
+</ul>
+<h5 id="restful-web-services">RESTful Web Services</h5>
+<p>Web service是一个平台独立的，低耦合的，自包含的、基于可编程的web的应用程序。<font color="#CD5C5C">基于 REST 架构的 Web Services 即是 RESTful</font>。</p>
+<p>由于轻量级以及通过 HTTP 直接传输数据的特性，Web 服务的 RESTful 方法已经成为最常见的替代方法。可以使用各种语言（比如 Java 程序、Perl、Ruby、Python、PHP 和 Javascript[包括 Ajax]）实现客户端。</p>
+<p>RESTful Web 服务通常可以通过自动客户端或代表用户的应用程序访问。但是，这种服务的简便性让用户能够与之直接交互，使用它们的 Web 浏览器构建一个 GET URL 并读取返回的内容。</p>
+<p>如果你还不明白，下面的理解都是对的，可以找到你容易理解的对号：</p>
+<ol>
+<li>URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。</li>
+<li>就是用URL定位资源，用HTTP描述操作。</li>
+</ol>
+<h5 id="如何使用restful风格的api">如何使用RESTful风格的API</h5>
+<h6 id="一-域名：">一、域名：</h6>
+<p>将api部署在专用域名下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://api.example.com</span><br></pre></td></tr></table></figure>
+<p>或者将api放在主域名下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.example.com/api/</span><br></pre></td></tr></table></figure>
+<h6 id="二-版本：">二、版本：</h6>
+<p>将API的版本号放在url中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://www.example.com/app/1.0/info</span><br><span class="line">http://www.example.com/app/1.2/info</span><br></pre></td></tr></table></figure>
+<h6 id="三-路径：">三、路径：</h6>
+<p>路径表示API的具体网址。每个网址代表一种资源。 资源作为网址，网址中不能有动词只能有名词，一般名词要与数据库的表名对应。而且名词要使用复数。</p>
+<p>错误示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://www.example.com/getGoods</span><br><span class="line">http://www.example.com/listOrders</span><br></pre></td></tr></table></figure>
+<p>正确示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#获取单个商品</span><br><span class="line"></span><br><span class="line">http://www.example.com/app/goods/1</span><br><span class="line">#获取所有商品</span><br><span class="line"></span><br><span class="line">http://www.example.com/app/goods</span><br></pre></td></tr></table></figure>
+<h6 id="四-使用标准的http方法：">四、使用标准的HTTP方法：</h6>
+<p>对于资源的具体操作类型，由HTTP动词表示。 常用的HTTP动词有四个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET     SELECT ：从服务器获取资源。</span><br><span class="line">POST    CREATE ：在服务器新建资源。</span><br><span class="line">PUT     UPDATE ：在服务器更新资源。</span><br><span class="line">DELETE  DELETE ：从服务器删除资源。</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#获取指定商品的信息</span><br><span class="line">GET http://www.example.com/goods/ID</span><br><span class="line"></span><br><span class="line">#新建商品的信息</span><br><span class="line">POST http://www.example.com/goods</span><br><span class="line"></span><br><span class="line">#更新指定商品的信息</span><br><span class="line">PUT http://www.example.com/goods/ID</span><br><span class="line"></span><br><span class="line">#删除指定商品的信息</span><br><span class="line">DELETE http://www.example.com/goods/ID</span><br></pre></td></tr></table></figure>
+<h6 id="五-过滤信息：">五、过滤信息：</h6>
+<p>如果资源数据较多，服务器不能将所有数据一次全部返回给客户端。API应该提供参数，过滤返回结果。 实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#指定返回数据的数量</span><br><span class="line">http://www.example.com/goods?limit=10</span><br><span class="line"></span><br><span class="line">#指定返回数据的开始位置</span><br><span class="line">http://www.example.com/goods?offset=10</span><br><span class="line"></span><br><span class="line">#指定第几页，以及每页数据的数量</span><br><span class="line">http://www.example.com/goods?page=2&amp;per_page=20</span><br></pre></td></tr></table></figure>
+<h6 id="六-状态码：">六、状态码：</h6>
+<p>服务器向用户返回的状态码和提示信息，常用的有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">200 OK  ：服务器成功返回用户请求的数据</span><br><span class="line">201 CREATED ：用户新建或修改数据成功。</span><br><span class="line">202 Accepted：表示请求已进入后台排队。</span><br><span class="line">400 INVALID REQUEST ：用户发出的请求有错误。</span><br><span class="line">401 Unauthorized ：用户没有权限。</span><br><span class="line">403 Forbidden ：访问被禁止。</span><br><span class="line">404 NOT FOUND ：请求针对的是不存在的记录。</span><br><span class="line">406 Not Acceptable ：用户请求的的格式不正确。</span><br><span class="line">500 INTERNAL SERVER ERROR ：服务器发生错误。</span><br></pre></td></tr></table></figure>
+<h6 id="七-错误信息：">七、错误信息：</h6>
+<p>一般来说，服务器返回的错误信息，以键值对的形式返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    error: &apos;Invalid API KEY&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="八-响应结果：">八、响应结果：</h6>
+<p>针对不同结果，服务器向客户端返回的结果应符合以下规范。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#返回商品列表</span><br><span class="line">GET    http://www.example.com/goods</span><br><span class="line"></span><br><span class="line">#返回单个商品</span><br><span class="line">GET    http://www.example.com/goods/cup</span><br><span class="line"></span><br><span class="line">#返回新生成的商品</span><br><span class="line">POST   http://www.example.com/goods</span><br><span class="line"></span><br><span class="line">#返回一个空文档</span><br><span class="line">DELETE http://www.example.com/goods</span><br></pre></td></tr></table></figure>
+<h6 id="九-使用链接关联相关的资源：">九、使用链接关联相关的资源：</h6>
+<p>在返回响应结果时提供链接其他API的方法，使客户端很方便的获取相关联的信息。</p>
+<h6 id="十-其他：">十、其他：</h6>
+<p>服务器返回的数据格式，应该尽量使用JSON，避免使用XML。</p>
+<h4 id="创建restful">创建RESTful</h4>
+<p>首先，创建一个 json 数据资源文件 users.json，内容如下：</p>
+<p><font color="#836FFF"><strong>users.json</strong></font></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"user1"</span> : &#123;</span><br><span class="line">      <span class="attr">"name"</span> : <span class="string">"mahesh"</span>,</span><br><span class="line">      <span class="attr">"password"</span> : <span class="string">"password1"</span>,</span><br><span class="line">      <span class="attr">"profession"</span> : <span class="string">"teacher"</span>,</span><br><span class="line">      <span class="attr">"id"</span>: <span class="number">1</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">"user2"</span> : &#123;</span><br><span class="line">      <span class="attr">"name"</span> : <span class="string">"suresh"</span>,</span><br><span class="line">      <span class="attr">"password"</span> : <span class="string">"password2"</span>,</span><br><span class="line">      <span class="attr">"profession"</span> : <span class="string">"librarian"</span>,</span><br><span class="line">      <span class="attr">"id"</span>: <span class="number">2</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">"user3"</span> : &#123;</span><br><span class="line">      <span class="attr">"name"</span> : <span class="string">"ramesh"</span>,</span><br><span class="line">      <span class="attr">"password"</span> : <span class="string">"password3"</span>,</span><br><span class="line">      <span class="attr">"profession"</span> : <span class="string">"clerk"</span>,</span><br><span class="line">      <span class="attr">"id"</span>: <span class="number">3</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>基于以上数据，我们创建以下 RESTful API：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th>URI</th>
+<th>HTTP方法</th>
+<th>发送内容</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td>listUsers</td>
+<td>GET</td>
+<td>空</td>
+<td>显示所有用户列表</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td>addUser</td>
+<td>POST</td>
+<td>JSON 字符串</td>
+<td>添加新用户</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td>deleteUser</td>
+<td>DELETE</td>
+<td>JSON 字符串</td>
+<td>删除用户</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td>:id</td>
+<td>GET</td>
+<td>空</td>
+<td>显示用户详细信息</td>
+</tr>
+</tbody>
+</table>
+<h5 id="1-获取用户列表：">1. 获取用户列表：</h5>
+<p>以下代码，我们创建了 RESTful API <strong>listUsers</strong>，用于读取用户的信息列表， server.js 文件代码如下所示：<br>
+<font color="#836FFF"><strong>server.js</strong></font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/listUsers'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    fs.readFile(__dirname+<span class="string">'/'</span>+<span class="string">'users.json'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">        res.end(data);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">8081</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> host = server.address().address;</span><br><span class="line">    <span class="keyword">var</span> port = server.address().port;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'应用实例，访问地址为 http://%s:%s'</span>,host,port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>接下来执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js </span><br><span class="line">应用实例，访问地址为 http://0.0.0.0:8081</span><br></pre></td></tr></table></figure>
+<p>在浏览器中访问 <a href="http://127.0.0.1:8081/listUsers%EF%BC%8C%E7%BB%93%E6%9E%9C%E5%A6%82%E4%B8%8B%E6%89%80%E7%A4%BA%EF%BC%9A" target="_blank" rel="noopener">http://127.0.0.1:8081/listUsers，结果如下所示：</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;user1&quot; : &#123;</span><br><span class="line">      &quot;name&quot; : &quot;mahesh&quot;,</span><br><span class="line">      &quot;password&quot; : &quot;password1&quot;,</span><br><span class="line">      &quot;profession&quot; : &quot;teacher&quot;,</span><br><span class="line">      &quot;id&quot;: 1</span><br><span class="line">   &#125;,</span><br><span class="line">   &quot;user2&quot; : &#123;</span><br><span class="line">      &quot;name&quot; : &quot;suresh&quot;,</span><br><span class="line">      &quot;password&quot; : &quot;password2&quot;,</span><br><span class="line">      &quot;profession&quot; : &quot;librarian&quot;,</span><br><span class="line">      &quot;id&quot;: 2</span><br><span class="line">   &#125;,</span><br><span class="line">   &quot;user3&quot; : &#123;</span><br><span class="line">      &quot;name&quot; : &quot;ramesh&quot;,</span><br><span class="line">      &quot;password&quot; : &quot;password3&quot;,</span><br><span class="line">      &quot;profession&quot; : &quot;clerk&quot;,</span><br><span class="line">      &quot;id&quot;: 3</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-添加用户：">2. 添加用户：</h5>
+<p>以下代码，我们创建了 RESTful API <strong>addUser</strong>， 用于添加新的用户数据，server.js 文件代码如下所示：</p>
+<p><font color="#836FFF"><strong>addUser.js</strong></font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="comment">// 添加的新用户数据</span></span><br><span class="line"><span class="keyword">var</span> user = &#123;</span><br><span class="line">    <span class="string">"user4"</span>:&#123;</span><br><span class="line">        <span class="string">"name"</span>:<span class="string">"mohit"</span>,</span><br><span class="line">        <span class="string">"password"</span>:<span class="string">"password4"</span>,</span><br><span class="line">        <span class="string">"profession"</span>:<span class="string">"teacher"</span>,</span><br><span class="line">        <span class="string">"id"</span>:<span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">app.get(<span class="string">'/addUser'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 读取已存在的数据</span></span><br><span class="line">    fs.readFile(__dirname+<span class="string">'/'</span>+<span class="string">'users.json'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        data = <span class="built_in">JSON</span>.parse(data);</span><br><span class="line">        data[<span class="string">"user4"</span>] = user[<span class="string">"user4"</span>];</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">8081</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> host = server.address().address;</span><br><span class="line">    <span class="keyword">var</span> port = server.address().port;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'应用实例，访问地址为 http://%s:%s'</span>,host,port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>接下来执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js </span><br><span class="line">应用实例，访问地址为 http://0.0.0.0:8081</span><br></pre></td></tr></table></figure>
+<p>在浏览器中访问 <a href="http://127.0.0.1:8081/addUser%EF%BC%8C%E7%BB%93%E6%9E%9C%E5%A6%82%E4%B8%8B%E6%89%80%E7%A4%BA%EF%BC%9A" target="_blank" rel="noopener">http://127.0.0.1:8081/addUser，结果如下所示：</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123; user1:</span><br><span class="line">   &#123; name: &apos;mahesh&apos;,</span><br><span class="line">     password: &apos;password1&apos;,</span><br><span class="line">     profession: &apos;teacher&apos;,</span><br><span class="line">     id: 1 &#125;,</span><br><span class="line">  user2:</span><br><span class="line">   &#123; name: &apos;suresh&apos;,</span><br><span class="line">     password: &apos;password2&apos;,</span><br><span class="line">     profession: &apos;librarian&apos;,</span><br><span class="line">     id: 2 &#125;,</span><br><span class="line">  user3:</span><br><span class="line">   &#123; name: &apos;ramesh&apos;,</span><br><span class="line">     password: &apos;password3&apos;,</span><br><span class="line">     profession: &apos;clerk&apos;,</span><br><span class="line">     id: 3 &#125;,</span><br><span class="line">  user4:</span><br><span class="line">   &#123; name: &apos;mohit&apos;,</span><br><span class="line">     password: &apos;password4&apos;,</span><br><span class="line">     profession: &apos;teacher&apos;,</span><br><span class="line">     id: 4 &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-显示用户详情：">3. 显示用户详情：</h5>
+<p>以下代码，我们创建了 RESTful API <strong>:id（用户id）</strong>， 用于读取指定用户的详细信息，server.js 文件代码如下所示：</p>
+<p><font color="#836FFF"><strong>server.js</strong></font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">app.get(<span class="string">'/:id'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 首先我们读取已存在的用户</span></span><br><span class="line">    fs.readFile(__dirname+<span class="string">'/'</span>+<span class="string">'users.json'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        data = <span class="built_in">JSON</span>.parse(data);</span><br><span class="line">        <span class="keyword">var</span> user = data[<span class="string">"user"</span> + req.params.id];</span><br><span class="line">        <span class="built_in">console</span>.log(user);</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(user));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">8081</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> host = server.address().address;</span><br><span class="line">    <span class="keyword">var</span> port = server.address().port;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'应用实例，访问地址为 http://%s:%s'</span>,host,port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>接下来执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js </span><br><span class="line">应用实例，访问地址为 http://0.0.0.0:8081</span><br></pre></td></tr></table></figure>
+<p>在浏览器中访问 <a href="http://127.0.0.1:8081/2%EF%BC%8C%E7%BB%93%E6%9E%9C%E5%A6%82%E4%B8%8B%E6%89%80%E7%A4%BA%EF%BC%9A" target="_blank" rel="noopener">http://127.0.0.1:8081/2，结果如下所示：</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;name&quot;:&quot;suresh&quot;,</span><br><span class="line">   &quot;password&quot;:&quot;password2&quot;,</span><br><span class="line">   &quot;profession&quot;:&quot;librarian&quot;,</span><br><span class="line">   &quot;id&quot;:2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-删除用户：">4. 删除用户：</h5>
+<p>以下代码，我们创建了 RESTful API <strong>deleteUser</strong>， 用于删除指定用户的详细信息，以下实例中，用户 id 为 2，server.js 文件代码如下所示：</p>
+<p><font color="#836FFF"><strong>server.js</strong></font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">var</span> id = <span class="number">2</span>;</span><br><span class="line">app.get(<span class="string">'/deleteUser'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// First read existing users</span></span><br><span class="line">    fs.readFile(__dirname+<span class="string">'/'</span>+<span class="string">'users.json'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        data = <span class="built_in">JSON</span>.parse(data);</span><br><span class="line">        <span class="keyword">delete</span> data[<span class="string">"user"</span> + id];</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">8081</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> host = server.address().address;</span><br><span class="line">    <span class="keyword">var</span> port = server.address().port;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'应用实例，访问地址为 http://%s:%s'</span>,host,port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>接下来执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js </span><br><span class="line">应用实例，访问地址为 http://0.0.0.0:8081</span><br></pre></td></tr></table></figure>
+<p>在浏览器中访问 <a href="http://127.0.0.1:8081/deleteUser%EF%BC%8C%E7%BB%93%E6%9E%9C%E5%A6%82%E4%B8%8B%E6%89%80%E7%A4%BA%EF%BC%9A" target="_blank" rel="noopener">http://127.0.0.1:8081/deleteUser，结果如下所示：</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123; user1:</span><br><span class="line">   &#123; name: &apos;mahesh&apos;,</span><br><span class="line">     password: &apos;password1&apos;,</span><br><span class="line">     profession: &apos;teacher&apos;,</span><br><span class="line">     id: 1 &#125;,</span><br><span class="line">  user3:</span><br><span class="line">   &#123; name: &apos;ramesh&apos;,</span><br><span class="line">     password: &apos;password3&apos;,</span><br><span class="line">     profession: &apos;clerk&apos;,</span><br><span class="line">     id: 3 &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果有人遇到乱码的问题，除了不是文件读取的编码问题，可以考虑为浏览器自动为没有在 <strong>html &gt; head</strong> 中解释编码的 <strong>html</strong> 编码为本地默认编码。可以主动添加 <strong>head</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.setHeader(&apos;Content-Type&apos;, &apos;text/html; charset=utf8&apos;);</span><br></pre></td></tr></table></figure>
+<p>如果在同一个 server.js 里创建多个 RESTful API ， 并且 <strong>:id</strong> 放在前边， 那么它会拦截其他的请求， 比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// 删除用户</span></span><br><span class="line">app.get(<span class="string">'/deleteUser'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">   <span class="comment">//  读取已存在用户</span></span><br><span class="line">   fs.readFile( __dirname + <span class="string">"/"</span> + <span class="string">"user.json"</span>, <span class="string">'utf8'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">       data = <span class="built_in">JSON</span>.parse( data );</span><br><span class="line">       <span class="keyword">delete</span> data[<span class="string">"user"</span> + id];</span><br><span class="line">       <span class="built_in">console</span>.log( data );</span><br><span class="line">       res.end( <span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询用户信息 (放到前边会拦截其他请求)</span></span><br><span class="line">app.get(<span class="string">'/:id'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, resp</span>)</span>&#123;</span><br><span class="line">    fs.readFile(__dirname + <span class="string">'/user.json'</span>, <span class="string">'utf-8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(err.stack);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        data = <span class="built_in">JSON</span>.parse(data);</span><br><span class="line">        <span class="keyword">var</span> user = data[<span class="string">'user'</span> + req.params.id];</span><br><span class="line">        <span class="built_in">console</span>.log(user);</span><br><span class="line">        resp.end(<span class="built_in">JSON</span>.stringify(user));</span><br><span class="line">    &#125; );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在浏览器中访问 <strong><a href="http://127.0.0.1:8081/deleteUser" target="_blank" rel="noopener">http://127.0.0.1:8081/deleteUser</a></strong>， 控制台打印信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">应用实例，访问地址为 http://0.0.0.0:8081</span><br><span class="line">undefined</span><br><span class="line">undefined</span><br></pre></td></tr></table></figure>
+<p>最后，如果还是不明白，可以看看<a href="https://phpenthusiast.com/blog/what-is-rest-api" target="_blank" rel="noopener">https://phpenthusiast.com/blog/what-is-rest-api</a> ，这篇文章的解释是比较容易理解的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Elaine Zhong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Elaine Zhong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node-js/" rel="tag"># node.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/linux-01-ubuntu-configuration/" rel="next" title="01_ubuntu_configuration">
+                <i class="fa fa-chevron-left"></i> 01_ubuntu_configuration
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/nodejs-15-Await/" rel="prev" title="15_Await">
+                15_Await <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/21.gif" alt="Elaine Zhong">
+            
+              <p class="site-author-name" itemprop="name">Elaine Zhong</p>
+              <p class="site-description motion-element" itemprop="description">弹指间，樯橹灰飞烟灭。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ElaineXHZhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:elainezhongxh@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">14-Node.js RESTful API</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是rest"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">什么是REST?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是rest-api"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">什么是REST API?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要使用rest风格？"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">为什么要使用REST风格？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#举例说明什么是representation-什么是state-以及什么是representation-state-transfer"><span class="nav-number">1.0.0.0.4.</span> <span class="nav-text">举例说明什么是Representation，什么是State，以及什么是Representation State Transfer</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#representation"><span class="nav-number">1.0.0.0.4.1.</span> <span class="nav-text">Representation</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#state"><span class="nav-number">1.0.0.0.4.2.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#representation-state-transfer"><span class="nav-number">1.0.0.0.4.3.</span> <span class="nav-text">Representation State Transfer</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rest是怎么产生的？"><span class="nav-number">1.0.0.0.5.</span> <span class="nav-text">REST是怎么产生的？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#七宗罪的第一条-混乱"><span class="nav-number">1.0.0.0.5.1.</span> <span class="nav-text">七宗罪的第一条，混乱。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#第二条-贪婪"><span class="nav-number">1.0.0.0.5.2.</span> <span class="nav-text">第二条，贪婪。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#第三条-无序"><span class="nav-number">1.0.0.0.5.3.</span> <span class="nav-text">第三条，无序。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#http方法"><span class="nav-number">1.0.0.0.6.</span> <span class="nav-text">HTTP方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#restful-web-services"><span class="nav-number">1.0.0.0.7.</span> <span class="nav-text">RESTful Web Services</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何使用restful风格的api"><span class="nav-number">1.0.0.0.8.</span> <span class="nav-text">如何使用RESTful风格的API</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一-域名："><span class="nav-number">1.0.0.0.8.1.</span> <span class="nav-text">一、域名：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#二-版本："><span class="nav-number">1.0.0.0.8.2.</span> <span class="nav-text">二、版本：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#三-路径："><span class="nav-number">1.0.0.0.8.3.</span> <span class="nav-text">三、路径：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#四-使用标准的http方法："><span class="nav-number">1.0.0.0.8.4.</span> <span class="nav-text">四、使用标准的HTTP方法：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#五-过滤信息："><span class="nav-number">1.0.0.0.8.5.</span> <span class="nav-text">五、过滤信息：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#六-状态码："><span class="nav-number">1.0.0.0.8.6.</span> <span class="nav-text">六、状态码：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#七-错误信息："><span class="nav-number">1.0.0.0.8.7.</span> <span class="nav-text">七、错误信息：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#八-响应结果："><span class="nav-number">1.0.0.0.8.8.</span> <span class="nav-text">八、响应结果：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#九-使用链接关联相关的资源："><span class="nav-number">1.0.0.0.8.9.</span> <span class="nav-text">九、使用链接关联相关的资源：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#十-其他："><span class="nav-number">1.0.0.0.8.10.</span> <span class="nav-text">十、其他：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建restful"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">创建RESTful</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-获取用户列表："><span class="nav-number">1.0.0.1.1.</span> <span class="nav-text">1. 获取用户列表：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-添加用户："><span class="nav-number">1.0.0.1.2.</span> <span class="nav-text">2. 添加用户：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-显示用户详情："><span class="nav-number">1.0.0.1.3.</span> <span class="nav-text">3. 显示用户详情：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-删除用户："><span class="nav-number">1.0.0.1.4.</span> <span class="nav-text">4. 删除用户：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Elaine Zhong</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'HRmeHgY5q4h81DuWKA5Xecb5-gzGzoHsz',
+        appKey: 'IHxXEldAQ9HvX50OQBco4Rgo',
+        placeholder: '请您在此处留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("t6ja4sx6jhDLUl6m1zehpfKf-gzGzoHsz", "wFhwhhVKsu2lewYHlLwhYGjk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"right","hOffset":30,"vOffset":-20},"mobile":{"show":false,"scale":0.05},"react":{"opacityDefault":1,"opacityOnHover":0.2}});</script></body>
+</html>

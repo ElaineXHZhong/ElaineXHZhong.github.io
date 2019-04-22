@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="03-CommonJS和Nodejs模块、自定义模块">
+<meta name="description" content="16-Nodejs如何调用Python函数">
 <meta name="keywords" content="node.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="03_user_defined_module">
-<meta property="og:url" content="http://yoursite.com/2019/04/22/nodejs-03-user-defined-module/index.html">
+<meta property="og:title" content="16_Call_Python">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/nodejs-16-Call-Python/index.html">
 <meta property="og:site_name" content="Elaine Zhong">
-<meta property="og:description" content="03-CommonJS和Nodejs模块、自定义模块">
+<meta property="og:description" content="16-Nodejs如何调用Python函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://adrianmejia.com/images/node-modules-large.png">
-<meta property="og:updated_time" content="2019-04-22T04:44:08.938Z">
+<meta property="og:image" content="http://blog.fens.me/wp-content/uploads/2015/03/child_process.png">
+<meta property="og:updated_time" content="2019-04-22T11:03:41.341Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="03_user_defined_module">
-<meta name="twitter:description" content="03-CommonJS和Nodejs模块、自定义模块">
-<meta name="twitter:image" content="https://adrianmejia.com/images/node-modules-large.png">
+<meta name="twitter:title" content="16_Call_Python">
+<meta name="twitter:description" content="16-Nodejs如何调用Python函数">
+<meta name="twitter:image" content="http://blog.fens.me/wp-content/uploads/2015/03/child_process.png">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/22/nodejs-03-user-defined-module/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/nodejs-16-Call-Python/">
 
 
 
 
 
-  <title>03_user_defined_module | Elaine Zhong</title>
+  <title>16_Call_Python | Elaine Zhong</title>
   
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/nodejs-03-user-defined-module/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/nodejs-16-Call-Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Elaine Zhong">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">03_user_defined_module</h1>
+          <h1 class="post-title" itemprop="name headline">16_Call_Python</h1>
         
 
         <div class="post-meta">
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T12:40:10+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T19:00:08+08:00">
                 2019-04-22
               </time>
             
@@ -372,8 +372,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/22/nodejs-03-user-defined-module/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/nodejs-03-user-defined-module/" itemprop="commentCount"></span>
+                <a href="/2019/04/22/nodejs-16-Call-Python/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/nodejs-16-Call-Python/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,7 +381,7 @@
 
           
           
-             <span id="/2019/04/22/nodejs-03-user-defined-module/" class="leancloud_visitors" data-flag-title="03_user_defined_module">
+             <span id="/2019/04/22/nodejs-16-Call-Python/" class="leancloud_visitors" data-flag-title="16_Call_Python">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -412,37 +412,77 @@
       
 
       
-        <h1>03-CommonJS和Nodejs模块、自定义模块</h1>
-<p><img src="https://adrianmejia.com/images/node-modules-large.png" alt></p>
+        <h2 id="16-nodejs如何调用python函数">16-Nodejs如何调用Python函数</h2>
+<p><img src="http://blog.fens.me/wp-content/uploads/2015/03/child_process.png" alt></p>
 <a id="more"></a>
-<h2 id="一-什么是-commonjs？">一、什么是 CommonJs？</h2>
-<p>JavaScript 是一个强大的<code>面向对象语言</code>，它有很多快速高效的解释器。然而， JavaScript 标准定义的 API 是为了构建基于浏览器的应用程序。并没有制定一个用于更广泛的应用程序的标准库。CommonJS 规范的提出,主要是为了弥补当前 JavaScript 没有标准的缺陷。它的终 极目标就是：提供一个类似 Python，Ruby 和 Java 语言的标准库,而不只是停留在小脚本程序的阶段。用 CommonJS API 编写出的应用，不仅可以利用 JavaScript 开发客户端应用，而且还可以编写以下应用。</p>
-<p>•服务器端 JavaScript 应用程序。 （nodejs）</p>
-<p>•命令行工具。</p>
-<p>•桌面图形界面应用程序。</p>
-<p><code>CommonJS 就是模块化的标准</code>，nodejs就是 CommonJS（模块化）的实现。</p>
-<h2 id="二-nodejs-中的模块化">二、Nodejs 中的模块化</h2>
-<p>Node 应用由模块组成，采用 CommonJS 模块规范。</p>
-<p>1、 在 Node中，模块分为两类:</p>
-<p>一类是 <code>Node 提供的模块,称为核心模块</code>；另一类是<code>用户编写的模块，称为文件模块</code>。</p>
-<p>• 核心模块部分在 Node 源代码的编译过程中，编译进了二进制执行文件。在 Node 进程启动时，部分核心模块就被直接加载进内存中，所以这部分核心模块引入时，文件定位和编译执行这两个步骤可以省略掉，并且在路径分析中优先判断，所以它的加载速度是最快的。 如：HTTP 模块 、URL 模块、Fs模块都是 nodejs 内置的核心模块，可以直接引入使用。</p>
-<p>• 文件模块则是在运行时动态加载，需要完整的路径分析、文件定位、编译执行过程、 速度相比核心模块稍微慢一些，但是用的非常多。这些模块需要我们自己定义。接下来我们看一下 nodejs 中的<code>自定义模块</code>。</p>
-<p>2、CommonJS（Nodejs）中自定义模块的规定：</p>
-<p>（1）我们可以把公共的功能抽离成为一个单独的 js 文件作为一个模块，默认情况下面这 个<code>模块里面的方法或者属性，外面是没法访问的</code>。如果要让外部可以访问模块里面的方法或 者属性，就必须在模块里面<code>通过exports或者module.exports</code>暴露属性或者方法。</p>
-<p>（2）在需要使用这些模块的文件中，<code>通过require的方式引入</code>这个模块。这个时候就可以 使用模块里面暴露的属性和方法。</p>
-<p>3、 定义使用模块：</p>
-<p><font color="#9A32CD"><strong>tools.js</strong></font></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个 tools.js 的模块 </span></span><br><span class="line"><span class="comment">// 模块定义 </span></span><br><span class="line"><span class="keyword">var</span> tools = &#123; </span><br><span class="line">    sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hello NodeJS'</span>; </span><br><span class="line">    &#125;, </span><br><span class="line">    add: <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;     </span><br><span class="line">        <span class="keyword">return</span> x + y; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;; </span><br><span class="line"><span class="comment">// 模块接口的暴露 </span></span><br><span class="line"><span class="comment">// module.exports = tools ; </span></span><br><span class="line">exports.sayHello = tools.sayHello; </span><br><span class="line">exports.add = tools.add;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span> (<span class="string">'http'</span>); </span><br><span class="line"> <span class="comment">// 引入自定义的 tools.js 模块 </span></span><br><span class="line"><span class="keyword">var</span> tools= <span class="built_in">require</span> (<span class="string">'./tools'</span>); </span><br><span class="line">tools.sayHello();  <span class="comment">//使用模块</span></span><br></pre></td></tr></table></figure>
-<p>两种方法：方法一</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = tools;</span><br><span class="line">-----------------------</span><br><span class="line"><span class="keyword">var</span> tools = <span class="built_in">require</span>(<span class="string">'./tools'</span>);</span><br><span class="line">tools.sayHello();</span><br><span class="line">tools.add();</span><br></pre></td></tr></table></figure>
-<p>​		      方法二</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">exports.sayHello = tools.sayHello;</span><br><span class="line">exports.add = tools.add;</span><br><span class="line">---------------------------------</span><br><span class="line"><span class="keyword">var</span> tools = <span class="built_in">require</span>(<span class="string">'./tools'</span>);</span><br><span class="line">tools.sayHello();</span><br><span class="line">tools.add();</span><br></pre></td></tr></table></figure>
-<p>由此想到的构造一个模块的方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tools = &#123;</span><br><span class="line">    tools01:&#123;</span><br><span class="line">        hello:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        elaine:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'elaine'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    tools02 :&#123;</span><br><span class="line">        hi:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'hi'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        hongkong:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'hongkong'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = tools;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tools = <span class="built_in">require</span>(<span class="string">'./01'</span>);</span><br><span class="line">tools.tools01.hello();</span><br><span class="line">tools.tools02.hi();</span><br></pre></td></tr></table></figure>
-<h2 id="三-npm-init-生成-package-json">三、npm init 生成 package.json</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<p>例子：用Nodejs的应用程序，调用Python的Machine Learning算法。</p>
+<p>最简单的方式是使用随Nodejs打包的&quot;child_process&quot;包。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn;</span><br><span class="line"><span class="keyword">var</span> process = spawn(<span class="string">'python'</span>,[</span><br><span class="line">    <span class="string">'path_to_script.py'</span>,</span><br><span class="line">    arg1,</span><br><span class="line">    arg2</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<p>所有你需要做的就是确保在你的python脚本中导入sys，然后你可以使用sys.argv [1]，sys.argv[2]访问arg1、arg2等等。</p>
+<p>要将数据发送回Nodejs，只需在python脚本中执行以下操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(dataToSendBack)</span><br><span class="line">sys.stdout.flush()</span><br></pre></td></tr></table></figure>
+<p>然后Nodejs可以使用以下方式监听数据：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">process.stdout.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>)</span>&#123;</span><br><span class="line"><span class="comment">// Do something with the data returned from python script</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>由于这允许使用spawn将多个参数传递给脚本，您可以重新构造一个python脚本，以便其中一个参数决定要调用哪个函数，另一个参数被传递给该函数等。</p>
+<p>下面是一个具体的例子：</p>
+<p><b>start.js</b></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>); <span class="comment">//import module</span></span><br><span class="line"><span class="keyword">var</span> app = express(); <span class="comment">// create its variable</span></span><br><span class="line">app.listen(<span class="number">3000</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// create a server running on port 3000 </span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'server running on port 3000'</span>);</span><br><span class="line">&#125;); <span class="comment">// server can be accessed through localhost:3000</span></span><br><span class="line"><span class="comment">// when the url if of the form localhost:3000/name,callName() function is excuted </span></span><br><span class="line">app.get(<span class="string">'/name'</span>,callName);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn; <span class="comment">// import chile_process module and user its spawn method, and assign create its variable</span></span><br><span class="line">    <span class="keyword">var</span> process = spawn(<span class="string">'python'</span>,[</span><br><span class="line">        <span class="string">'./hello.py'</span>,</span><br><span class="line">        req.query.firstname,</span><br><span class="line">        req.query.lastname</span><br><span class="line">    ]); <span class="comment">// parameters passed in spawn:1.type of script 2.list containing the path and arguments of the script</span></span><br><span class="line">    process.stdout.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123; <span class="comment">// standard output data from script which executed</span></span><br><span class="line">        res.send(data.toString()); <span class="comment">// send this data to res object</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;; </span><br><span class="line"></span><br><span class="line"><span class="comment">//http://localhost:3000/name?firstname=Mike&amp;lastname=Will</span></span><br><span class="line"><span class="comment">//Output from Python-- First name: Mike Last name: Will</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//http://localhost:3000/name?firstname=elaine&amp;lastname=zhong</span></span><br><span class="line"><span class="comment">//Output from Python-- First name: elaine Last name: zhong</span></span><br></pre></td></tr></table></figure>
+<p><b>hello.py</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># Takes first name and last name via command</span></span><br><span class="line"><span class="comment"># line arguments and then display them</span></span><br><span class="line">print(<span class="string">"\n Output from Python-- \n\n"</span>)</span><br><span class="line">print(<span class="string">"\n First name: "</span> + sys.argv[<span class="number">1</span>])</span><br><span class="line">print(<span class="string">"\n Last name: "</span> + sys.argv[<span class="number">2</span>])</span><br><span class="line"><span class="comment"># Save the script as hello.py</span></span><br></pre></td></tr></table></figure>
+<p>品尝了前菜，下面系统来讲讲Nodejs想要调用Python文件有哪些方法。</p>
+<p>话说Nodejs是利用子进程来调用系统命令或者文件，它的子进程提供了与系统交互的重要接口，其主要API有： 标准输入、标准输出及标准错误输出的接口。</p>
+<ul>
+<li>child.stdin 获取标准输入</li>
+<li>child.stdout 获取标准输出</li>
+<li>child.stderr 获取标准错误输出</li>
+</ul>
+<p>获取子进程的PID：child.pid ：</p>
+<ol>
+<li>提供生成子进程的方法：child_process.spawn(cmd, args=[], [options])</li>
+<li>提供直接执行系统命令的方法：child_process.exec(cmd, [options], callback)</li>
+<li>提供调用脚本文件的方法：child_process.execFile(file, [args], [options], [callback])</li>
+<li>提供杀死进程的方法：child.kill(signal=‘SIGTERM’)</li>
+</ol>
+<p>下面结合例子来解释：</p>
+<ol>
+<li>
+<p><strong>利用子进程调用系统命令（获取系统内存使用情况）</strong></p>
+<p>新建nodejs文件，名为cmd_spawn.js，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn;</span><br><span class="line"><span class="keyword">var</span> free = spawn(<span class="string">'free'</span>, [<span class="string">'-m'</span>]); </span><br><span class="line"><span class="comment">// 捕获标准输出并将其打印到控制台 </span></span><br><span class="line">free.stdout.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123; </span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'standard output:\n'</span> + data); </span><br><span class="line">&#125;); </span><br><span class="line"><span class="comment">// 捕获标准错误输出并将其打印到控制台 </span></span><br><span class="line">free.stderr.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123; </span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'standard error output:\n'</span> + data); </span><br><span class="line">&#125;); </span><br><span class="line"><span class="comment">// 注册子进程关闭事件 </span></span><br><span class="line">free.on(<span class="string">'exit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">code, signal</span>) </span>&#123; </span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'child process eixt ,exit:'</span> + code); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>运行node cmd_spawn.js和free -m的结果一模一样。</p>
+</li>
+<li>
+<p><strong>执行系统命令（child_process.exec()）</strong></p>
+<p>功能比上面的强大一点，比如我想关注天气，现在我要curl一下天气的接口返回json格式的数据，可能我要对它进行一番操作，这里就打印出来不操作。</p>
+<p>新建nodejs文件，名为cmd_exec.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">'child_process'</span>).exec; </span><br><span class="line"><span class="keyword">var</span> cmdStr = <span class="string">'curl http://www.weather.com.cn/data/sk/101010100.html'</span>;</span><br><span class="line">exec(cmdStr, <span class="function"><span class="keyword">function</span>(<span class="params">err,stdout,stderr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'get weather api error:'</span>+stderr);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        这个stdout的内容就是上面我curl出来的这个东西：</span></span><br><span class="line"><span class="comment">        &#123;"weatherinfo":&#123;"city":"北京","cityid":"101010100","temp":"3","WD":"西北风","WS":"3级","SD":"23%","WSE":"3","time":"21:20","isRadar":"1","Radar":"JC_RADAR_AZ9010_JB","njd":"暂无实况","qy":"1019"&#125;&#125;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">var</span> data = <span class="built_in">JSON</span>.parse(stdout);</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>直接curl出来和通过运行脚本的出来的结果是一样的：node cmd_exec.js的结果与curl <a href="http://www.weather.com.cn/data/sk/101010100.html%E6%98%AF%E4%B8%80%E6%A0%B7%E7%9A%84%E3%80%82" target="_blank" rel="noopener">http://www.weather.com.cn/data/sk/101010100.html是一样的。</a></p>
+</li>
+<li>
+<p><strong>调用传参数的shell脚本（child_process.execFile()）</strong></p>
+<p>这个要先准备个shell脚本，比如我要连到一台服务器，来修改它的密码，则我要提供IP，user，new pwd，old pwd，新建shell脚本文件change_password.sh：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line"></span><br><span class="line">IP=""</span><br><span class="line">NAME=""</span><br><span class="line">PASSWORD=""</span><br><span class="line">NEWPASSWORD=""</span><br><span class="line"></span><br><span class="line">while getopts "H:U:P:N:" arg #选项后面的冒号表示该选项需要参数</span><br><span class="line">do</span><br><span class="line">        case $arg in</span><br><span class="line">             H)</span><br><span class="line">                IP=$OPTARG</span><br><span class="line">                ;;</span><br><span class="line">             U)</span><br><span class="line">                NAME=$OPTARG</span><br><span class="line">                ;;</span><br><span class="line">             P)</span><br><span class="line">                PASSWORD=$OPTARG</span><br><span class="line">                ;;</span><br><span class="line">             N)</span><br><span class="line">                NEWPASSWORD=$OPTARG</span><br><span class="line">                ;;</span><br><span class="line">             ?)  #当有不认识的选项的时候arg为?</span><br><span class="line">            echo "含有未知参数"</span><br><span class="line">        exit 1</span><br><span class="line">        ;;</span><br><span class="line">        esac</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">先获取userid</span></span><br><span class="line">USERID=`/usr/bin/ipmitool -I lanplus -H $IP -U $NAME -P $PASSWORD user list | grep root | awk '&#123;print $1&#125;'`</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span> <span class="variable">$USERID</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">根据userid来修改密码</span></span><br><span class="line">/usr/bin/ipmitool -I lanplus -H $IP -U $NAME -P $PASSWORD user set password $USERID $NEWPASSWORD</span><br></pre></td></tr></table></figure>
+<p>然后我准备一个nodejs文件来调用这个shell脚本，叫file_changepwd.js：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callfile = <span class="built_in">require</span>(<span class="string">'child_process'</span>); </span><br><span class="line"><span class="keyword">var</span> ip = <span class="string">'1.1.1.1'</span>;</span><br><span class="line"><span class="keyword">var</span> username = <span class="string">'test'</span>;</span><br><span class="line"><span class="keyword">var</span> password = <span class="string">'pwd'</span>;</span><br><span class="line"><span class="keyword">var</span> newpassword = <span class="string">'newpwd'</span>;</span><br><span class="line"></span><br><span class="line">callfile.execFile(<span class="string">'change_password.sh'</span>,[<span class="string">'-H'</span>, ip, <span class="string">'-U'</span>, username, <span class="string">'-P'</span>, password, <span class="string">'-N'</span>, newpassword],<span class="literal">null</span>,<span class="function"><span class="keyword">function</span> (<span class="params">err, stdout, stderr</span>) </span>&#123;</span><br><span class="line">    callback(err, stdout, stderr);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>看过上面的，其实调用python脚本就没什么悬念了，本质上也就是执行命令。</p>
+</li>
+<li>
+<p><strong>调用python脚本（python脚本本身是传参数的）</strong></p>
+<p>下面这段是对python传参数的简单说明：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*-coding:utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">需要模块：sys</span></span><br><span class="line"><span class="string">参数个数：len(sys.argv)</span></span><br><span class="line"><span class="string">脚本名：    sys.argv[0]</span></span><br><span class="line"><span class="string">参数1：     sys.argv[1]</span></span><br><span class="line"><span class="string">参数2：     sys.argv[2]</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">print</span> <span class="string">u"脚本名："</span>, sys.argv[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(sys.argv)):<span class="comment">#这里参数从1开始</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">u"参数"</span>, i, sys.argv[i]</span><br></pre></td></tr></table></figure>
+<p>准备一个nodejs文件来调用这个python脚本，file_python.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">'child_process'</span>).exec;</span><br><span class="line"><span class="keyword">var</span> arg1 = <span class="string">'hello'</span></span><br><span class="line"><span class="keyword">var</span> arg2 = <span class="string">'jzhou'</span></span><br><span class="line">exec(<span class="string">'python py_test.py '</span>+ arg1+<span class="string">' '</span>+arg2+<span class="string">' '</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error,stdout,stderr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(stdout.length &gt;<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'you offer args:'</span>,stdout);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'you don\'t offer args'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(error) &#123;</span><br><span class="line">        <span class="built_in">console</span>.info(<span class="string">'stderr : '</span>+stderr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">py_test.py内容如下：</span><br><span class="line"># -*-coding:utf-8 -*-</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">print sys.argv</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="比较exec和spawn">比较exec和spawn</h4>
+<ol>
+<li><code>exec将子进程输出结果暂放在buffer中</code>，在<code>结果完全返回后</code>，再将输出<code>一次性的以回调函数返回</code>。如果exec的buffer体积设置的不够大，它将会以一个“maxBuffer exceeded”错误失败告终。而<code>spawn在子进程开始执行后</code>，就<code>不断的将数据从子进程返回给主进程</code>，它没有回调函数，它通过<code>流的方式</code>发数据传给主进程，从而实现了多进程之间的数据交换。这个功能的直接用应用场景就是“系统监控”。</li>
+<li>exec更方便一些,将整个命令放在第一个参数中，而spqwn需要拆分。<br>
+<code>child_process.spawn('python', ['support.py', i])</code><br>
+<code>child_process.exec('python support.py '+i, callback)</code></li>
+</ol>
+<p>上面的方法主要都是执行整个Python文件的，下面介绍Github上一个在传递参数、返回值、异常上很有优势的模块：python.js</p>
+<p>附上项目于地址：<a href="https://github.com/monkeycz/python.js" target="_blank" rel="noopener">https://github.com/monkeycz/python.js</a></p>
 
       
     </div>
@@ -502,8 +542,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/nodejs-02-http-module/" rel="next" title="02_http_module">
-                <i class="fa fa-chevron-left"></i> 02_http_module
+              <a href="/2019/04/22/jQuery-01-jQuery-introduction/" rel="next" title="01_jQuery_introduction">
+                <i class="fa fa-chevron-left"></i> 01_jQuery_introduction
               </a>
             
           </div>
@@ -511,10 +551,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/22/nodejs-04-npm/" rel="prev" title="04_npm">
-                04_npm <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -667,7 +703,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">03-CommonJS和Nodejs模块、自定义模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-什么是-commonjs？"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是 CommonJs？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-nodejs-中的模块化"><span class="nav-number">1.2.</span> <span class="nav-text">二、Nodejs 中的模块化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-npm-init-生成-package-json"><span class="nav-number">1.3.</span> <span class="nav-text">三、npm init 生成 package.json</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#16-nodejs如何调用python函数"><span class="nav-number">1.</span> <span class="nav-text">16-Nodejs如何调用Python函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比较exec和spawn"><span class="nav-number">1.0.1.</span> <span class="nav-text">比较exec和spawn</span></a></li></ol></li></ol></div>
             
 
           </div>
