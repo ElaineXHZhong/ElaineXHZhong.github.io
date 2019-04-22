@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="node.js,">
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="弹指间，樯橹灰飞烟灭。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="12- Node.js路由封装">
+<meta name="keywords" content="node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12_Router">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/nodejs-12-Router/index.html">
 <meta property="og:site_name" content="Elaine Zhong">
-<meta property="og:description" content="弹指间，樯橹灰飞烟灭。">
+<meta property="og:description" content="12- Node.js路由封装">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T10:42:06.345Z">
+<meta property="og:image" content="http://jorgeramon.me/wp-content/uploads/2014/11/server-endpoint-blocks-1.png">
+<meta property="og:updated_time" content="2019-04-22T05:10:42.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="弹指间，樯橹灰飞烟灭。">
+<meta name="twitter:title" content="12_Router">
+<meta name="twitter:description" content="12- Node.js路由封装">
+<meta name="twitter:image" content="http://jorgeramon.me/wp-content/uploads/2014/11/server-endpoint-blocks-1.png">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/nodejs-12-Router/">
 
 
 
 
 
-  <title>tags | Elaine Zhong</title>
+  <title>12_Router | Elaine Zhong</title>
   
 
 
@@ -287,40 +290,228 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/nodejs-12-Router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Elaine Zhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/21.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elaine Zhong">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 2 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/hexo/" style="font-size: 12px; color: #ccc">hexo</a> <a href="/tags/node-js/" style="font-size: 30px; color: #111">node.js</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">12_Router</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T13:08:41+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">node.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/22/nodejs-12-Router/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/nodejs-12-Router/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/22/nodejs-12-Router/" class="leancloud_visitors" data-flag-title="12_Router">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1>12- Node.js路由封装</h1>
+<p><img src="http://jorgeramon.me/wp-content/uploads/2014/11/server-endpoint-blocks-1.png" alt></p>
+<a id="more"></a>
+<p><font color="#9A32CD"><strong>01router.js</strong></font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入http模块</span></span><br><span class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> url=<span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">var</span> ejs=<span class="built_in">require</span>(<span class="string">'ejs'</span>);</span><br><span class="line"><span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="comment">//路由:指的就是针对不同请求的 URL，处理不同的业务逻辑。</span></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">	res.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html;charset='utf-8'"</span>&#125;);</span><br><span class="line">	<span class="comment">//获取get 还是post请求</span></span><br><span class="line">	<span class="keyword">var</span> method=req.method.toLowerCase();</span><br><span class="line">	<span class="comment">//console.log(method);</span></span><br><span class="line">	<span class="keyword">var</span> pathname=url.parse(req.url,<span class="literal">true</span>).pathname;</span><br><span class="line">	<span class="keyword">if</span>(pathname==<span class="string">'/login'</span>)&#123;  <span class="comment">/*显示登录页面*/</span></span><br><span class="line">		ejs.renderFile(<span class="string">'views/form.ejs'</span>,&#123;</span><br><span class="line">		&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">			res.end(data);</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(pathname==<span class="string">'/dologin'</span> &amp;&amp;method==<span class="string">'get'</span>)&#123;  <span class="comment">/*执行登录的操作*/</span></span><br><span class="line">		<span class="comment">//get获取数据</span></span><br><span class="line">		<span class="built_in">console</span>.log(url.parse(req.url,<span class="literal">true</span>).query);</span><br><span class="line">		res.end(<span class="string">'dologin'</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(pathname==<span class="string">'/dologin'</span> &amp;&amp;method==<span class="string">'post'</span>)&#123;  <span class="comment">/*执行登录的操作*/</span></span><br><span class="line">		<span class="keyword">var</span> postStr=<span class="string">''</span>;</span><br><span class="line">		req.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;</span><br><span class="line">			postStr+=chunk;</span><br><span class="line">		&#125;)</span><br><span class="line">		req.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,chunk</span>)</span>&#123;</span><br><span class="line">			<span class="comment">//res.end(postStr);</span></span><br><span class="line">			<span class="built_in">console</span>.log(postStr);</span><br><span class="line">			fs.appendFile(<span class="string">'login.txt'</span>,postStr+<span class="string">'\n'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">				<span class="keyword">if</span>(err)&#123;</span><br><span class="line">					<span class="built_in">console</span>.log(err);</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">'写入数据成功'</span>);</span><br><span class="line">			&#125;)</span><br><span class="line">			res.end(<span class="string">"&lt;script&gt;alert('登录成功');history.back();&lt;/script&gt;"</span>)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		ejs.renderFile(<span class="string">'views/index.ejs'</span>,&#123;</span><br><span class="line">		&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">			res.end(data);</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;).listen(<span class="number">8001</span>);</span><br></pre></td></tr></table></figure>
+<p><font color="#9A32CD"><strong>02router.js</strong></font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入http模块</span></span><br><span class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> url=<span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">var</span> model=<span class="built_in">require</span>(<span class="string">'./model/model.js'</span>);</span><br><span class="line"><span class="comment">//model['login']('111','22');</span></span><br><span class="line"><span class="comment">////路由:指的就是针对不同请求的 URL，处理不同的业务逻辑。</span></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html;charset='utf-8'"</span>&#125;);</span><br><span class="line">    <span class="keyword">var</span> pathname=url.parse(req.url).pathname.replace(<span class="string">'/'</span>,<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">if</span>(pathname!=<span class="string">'favicon.ico'</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            model[pathname](req, res);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">            model[<span class="string">'home'</span>](req, res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//console.log(pathname);</span></span><br><span class="line">&#125;).listen(<span class="number">8001</span>);</span><br></pre></td></tr></table></figure>
+<p><font color="#9A32CD"><strong>03demo.js</strong></font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">var</span> route = <span class="built_in">require</span>(<span class="string">'./model/http-route.js'</span>);</span><br><span class="line"><span class="keyword">var</span> app = route();</span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> server = http.createServer(app);</span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.send(<span class="string">'é¦–é¡µ'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">app.get(<span class="string">'/login'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.send(<span class="string">'login'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">app.get(<span class="string">'/register'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.send(<span class="string">'register'</span>);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line">app.post(<span class="string">'/test'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'POST'</span>, req.query);</span><br><span class="line">    res.send(req.query);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">8080</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'listen '</span> + server.address().port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Elaine Zhong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Elaine Zhong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node-js/" rel="tag"># node.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/nodejs-11-Get-Post/" rel="next" title="11_Get_Post">
+                <i class="fa fa-chevron-left"></i> 11_Get_Post
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/hexo-00-hello-world/" rel="prev" title="hello-world">
+                hello-world <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -356,8 +547,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -435,6 +635,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">12- Node.js路由封装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

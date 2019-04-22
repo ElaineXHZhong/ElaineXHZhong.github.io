@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="node.js,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="05-Node.js fs模块">
+<meta name="keywords" content="node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="05_Fs_Module">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/nodejs-05-Fs-Module/index.html">
+<meta property="og:site_name" content="Elaine Zhong">
+<meta property="og:description" content="05-Node.js fs模块">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.pandashen.com/2018/06/30/20180630172601/fs.jpg">
+<meta property="og:updated_time" content="2019-04-22T05:03:45.551Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="05_Fs_Module">
+<meta name="twitter:description" content="05-Node.js fs模块">
+<meta name="twitter:image" content="https://www.pandashen.com/2018/06/30/20180630172601/fs.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/nodejs-05-Fs-Module/">
+
+
+
+
+
+  <title>05_Fs_Module | Elaine Zhong</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Elaine Zhong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">世界是趋于混沌的，我们做的是减少熵</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+
+
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/nodejs-05-Fs-Module/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Elaine Zhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/21.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elaine Zhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">05_Fs_Module</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T12:47:56+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">node.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/22/nodejs-05-Fs-Module/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/nodejs-05-Fs-Module/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/22/nodejs-05-Fs-Module/" class="leancloud_visitors" data-flag-title="05_Fs_Module">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1>05-Node.js fs模块</h1>
+<p><img src="https://www.pandashen.com/2018/06/30/20180630172601/fs.jpg" alt></p>
+<a id="more"></a>
+<ol>
+<li>fs.stat		   检测是文件还是目录</li>
+<li>fs.mkdir              创建目录</li>
+<li>fs.writeFile        创建写入文件</li>
+<li>fs.appendFile   追加文件</li>
+<li>fs.readFile         读取文件</li>
+<li>fs.readdir           读取目录</li>
+<li>fs.rename          重命名</li>
+<li>fs.rmdir               删除目录</li>
+<li>fs.unlink             删除文件</li>
+<li>fs.createReadStream    从文件流中读取数据</li>
+<li>fs.createWriteStream    写入文件</li>
+<li>管道流</li>
+</ol>
+<h2 id="1-fs-stat-检测是文件还是目录">1、fs.stat 检测是文件还是目录</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>) </span><br><span class="line">fs .stat(<span class="string">'hello.js'</span>,(error,stats) =&gt;&#123; </span><br><span class="line">    <span class="keyword">if</span>(error)&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(error)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(stats) </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`文件：<span class="subst">$&#123;stats.isFile()&#125;</span>`</span>) </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`目录：<span class="subst">$&#123;stats.isDirectory()&#125;</span>`</span>) </span><br><span class="line">    &#125; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt; node test</span><br><span class="line">Stats &#123;</span><br><span class="line">  dev: <span class="number">315831262</span>,</span><br><span class="line">  mode: <span class="number">33206</span>,</span><br><span class="line">  nlink: <span class="number">1</span>,</span><br><span class="line">  uid: <span class="number">0</span>,</span><br><span class="line">  gid: <span class="number">0</span>,</span><br><span class="line">  rdev: <span class="number">0</span>,</span><br><span class="line">  blksize: <span class="literal">undefined</span>,</span><br><span class="line">  ino: <span class="number">2533274790764158</span>,</span><br><span class="line">  size: <span class="number">17</span>,</span><br><span class="line">  blocks: <span class="literal">undefined</span>,</span><br><span class="line">  atimeMs: <span class="number">1553754246606.595</span>,</span><br><span class="line">  mtimeMs: <span class="number">1553754257410.068</span>,</span><br><span class="line">  ctimeMs: <span class="number">1553754257410.068</span>,</span><br><span class="line">  birthtimeMs: <span class="number">1553754246606.595</span>,</span><br><span class="line">  atime: <span class="number">2019</span><span class="number">-03</span><span class="number">-28</span>T06:<span class="number">24</span>:<span class="number">06.607</span>Z,</span><br><span class="line">  mtime: <span class="number">2019</span><span class="number">-03</span><span class="number">-28</span>T06:<span class="number">24</span>:<span class="number">17.410</span>Z,</span><br><span class="line">  ctime: <span class="number">2019</span><span class="number">-03</span><span class="number">-28</span>T06:<span class="number">24</span>:<span class="number">17.410</span>Z,</span><br><span class="line">  birthtime: <span class="number">2019</span><span class="number">-03</span><span class="number">-28</span>T06:<span class="number">24</span>:<span class="number">06.607</span>Z &#125;</span><br><span class="line">文件：<span class="literal">true</span></span><br><span class="line">目录：<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-fs-mkdir-创建目录">2、fs.mkdir 创建目录</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span> (<span class="string">'fs'</span>) </span><br><span class="line">fs.mkdir(<span class="string">'logs'</span>, (error) =&gt; &#123; </span><br><span class="line">    <span class="keyword">if</span>(error)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error) </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'成功创建目录：logs'</span>) </span><br><span class="line">    &#125;</span><br><span class="line">&#125;) </span><br><span class="line"><span class="comment">// 创建logs目录（在同一目录下）</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-fs-writefile-创建写入文件">3、fs.writeFile 创建写入文件</h2>
+<p>如果不存在就创建，已经存在会覆盖</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span> (<span class="string">'fs'</span>) </span><br><span class="line">fs.writeFile(<span class="string">'logs/hello.log'</span>,<span class="string">'您好~\n'</span>,(error)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(error)&#123; </span><br><span class="line">        <span class="built_in">console</span> .log(error) </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">        <span class="built_in">console</span> .log(<span class="string">'成功写入文件'</span>) </span><br><span class="line">    &#125; </span><br><span class="line">&#125;) </span><br><span class="line"><span class="comment">// 在logs目录下创建了hello.log文件，内容为'您好~'</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-fs-appendfile-追加文件">4、fs.appendFile 追加文件</h2>
+<p>如果文件不存在就创建，如果存在就追加内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span> (<span class="string">'fs'</span>) </span><br><span class="line">fs.appendFile(<span class="string">'logs/hello.log'</span>,<span class="string">'hello~\n'</span>,(error)=&gt;&#123; </span><br><span class="line">    <span class="keyword">if</span>(error)&#123; </span><br><span class="line">        <span class="built_in">console</span> .log(error) </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">        <span class="built_in">console</span> .log(<span class="string">'成功写入文件'</span>) </span><br><span class="line">    &#125; </span><br><span class="line">&#125;) </span><br><span class="line"><span class="comment">// 在logs目下的hello.log文件中追加内容'hello~'</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-fs-readfile-读取文件">5、fs.readFile 读取文件</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span> (<span class="string">'fs'</span>) </span><br><span class="line">fs.readFile(<span class="string">'logs/hello.log'</span>,<span class="string">'utf8'</span>,(error,data)=&gt;&#123; </span><br><span class="line">    <span class="keyword">if</span>(error)&#123; </span><br><span class="line">        <span class="built_in">console</span> .log(error) </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">        <span class="built_in">console</span> .log(data) </span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;node test</span><br><span class="line">您好~</span><br><span class="line">hello~</span><br></pre></td></tr></table></figure>
+<h2 id="6-fs-readdir-读取目录">6、fs.readdir 读取目录</h2>
+<p>拿到一个文件夹下面的所有目录和文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>) </span><br><span class="line">fs.readdir(<span class="string">'logs'</span>,(error,files)=&gt;&#123;   </span><br><span class="line">    <span class="keyword">if</span>(error)&#123;     </span><br><span class="line">        <span class="built_in">console</span>.log(error)   </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;     </span><br><span class="line">        <span class="built_in">console</span>.log(files)   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; node test</span><br><span class="line">[ <span class="string">'hello.log'</span> ]</span><br></pre></td></tr></table></figure>
+<h2 id="7-fs-rename-重命名">7、fs.rename 重命名</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = reuiure(<span class="string">'fs'</span>);</span><br><span class="line">fs.rename(<span class="string">'logs/hello.log'</span>,<span class="string">'logs/haha.log'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'重命名成功'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// logs目录下的hello.log文件重命名为haha.log</span></span><br></pre></td></tr></table></figure>
+<p>可以用作剪切功能</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">fs.rename(<span class="string">'html/css/basic.css'</span>,<span class="string">'html/style.css'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'剪切成功'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// html/css目录下的basic.css被剪切到style.css中（basic.css不见了，style.css存在，但内容变为原来basic.css中的内容）</span></span><br></pre></td></tr></table></figure>
+<h2 id="8-fs-rmdir-删除目录">8、fs.rmdir 删除目录</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">fs.rmdir(<span class="string">'logs'</span>,(error)=&gt;&#123;   </span><br><span class="line">    <span class="keyword">if</span>(error) &#123;     </span><br><span class="line">        <span class="built_in">console</span>.log(error)   </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;     </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'成功的删除了目录：logs'</span>)   </span><br><span class="line">    &#125; </span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 只有当logs目录下为空（没有任何文件和目录时才可被删除)</span></span><br></pre></td></tr></table></figure>
+<h2 id="9-fs-unlink-删除文件">9、fs.unlink 删除文件</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> file = <span class="string">'haha.log'</span>;</span><br><span class="line">fs.unlink(<span class="string">`logs/<span class="subst">$&#123;file&#125;</span>`</span>,(error)=&gt;&#123;   </span><br><span class="line">    <span class="keyword">if</span>(error)&#123;     </span><br><span class="line">        <span class="built_in">console</span>.log(error)  </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;     </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`成功的删除了文件: <span class="subst">$&#123;file&#125;</span>`</span>)   </span><br><span class="line">    &#125; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;node test</span><br><span class="line">成功的删除了文件: haha.log</span><br></pre></td></tr></table></figure>
+<h2 id="10-fs-createreadstream-以文件流的方式读取数据">10、fs.createReadStream 以文件流的方式读取数据</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span> (<span class="string">'fs'</span>) </span><br><span class="line"><span class="keyword">var</span> fileReadStream = fs.createReadStream(<span class="string">'data.json'</span>) </span><br><span class="line"><span class="keyword">let</span> count =<span class="number">0</span>; </span><br><span class="line"><span class="keyword">var</span> data =<span class="string">''</span>; </span><br><span class="line"><span class="comment">// 处理事件流：data、end、error</span></span><br><span class="line">fileReadStream.on(<span class="string">'data'</span>,(chunk)=&gt;&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123; ++ count &#125;</span> 接收到：<span class="subst">$&#123;chunk.length&#125;</span>`</span>); </span><br><span class="line">    data +=chunk </span><br><span class="line">&#125;) </span><br><span class="line"> </span><br><span class="line">fileReadStream .on(<span class="string">'end'</span>,()=&gt;&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'--- 结束 ---'</span>); </span><br><span class="line">    <span class="built_in">console</span>.log( count ); </span><br><span class="line">    <span class="built_in">console</span>.log( data );</span><br><span class="line">&#125;) </span><br><span class="line"> </span><br><span class="line">fileReadStream.on(<span class="string">'error'</span>,(error)=&gt;&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(error) </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> readStream = fs.createReadStream(<span class="string">'input.txt'</span>);</span><br><span class="line"><span class="keyword">var</span> data = <span class="string">''</span>; <span class="comment">// 保存数据</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 处理事件流：data、end、error</span></span><br><span class="line">readStream.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;</span><br><span class="line">    data+=chunk;</span><br><span class="line">    count++;</span><br><span class="line">&#125;);</span><br><span class="line">readStream.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(count); <span class="comment">// 用文件流的方式读取，文件比较小的时候读取一次就读完了；文件比较大的时候，要读取多次</span></span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;)</span><br><span class="line">readStream.on(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="11-fs-createwritestream-以文件流的方式写入文件">11、fs.createWriteStream 以文件流的方式写入文件</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> data = <span class="string">'我是从数据库获取的数据，我要保存进文件里\n'</span>;</span><br><span class="line"><span class="comment">// 创建一个可写入的流，写入到文件output.txt</span></span><br><span class="line"><span class="keyword">var</span> writeStream = fs.createWriteStream(<span class="string">'output.txt'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">    writeStream.write(data,<span class="string">'utf8'</span>); <span class="comment">// 写入数据</span></span><br><span class="line">&#125;</span><br><span class="line">writeStream.end(); <span class="comment">// 标记写入完成</span></span><br><span class="line">writeStream.on(<span class="string">'finish'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// finish与end配对才有用</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'写入完成'</span>);</span><br><span class="line">&#125;)</span><br><span class="line">writeStream.on(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'写入失败'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="12-readstream-pipe-writestream-以管道流的方式读取文件和写入文件">12、readStream.pipe(writeStream) 以管道流的方式读取文件和写入文件</h2>
+<p>管道提供了一个输出流到输入流的机制。通常我们用于从一个流中获取数据并将数据传 递到另外一个流中。</p>
+<p>我们把文件比作装水的桶，而水就是文件里的内容，我们用一根管子(pipe)连接两个桶使得水从一个<br>
+桶(source)流入另一个桶(dest)，这样就慢慢的实现了<code>大文件的复制</code>过程。<br>
+以下实例我们通过读取一个文件内容并将内容写入到另外一个文件中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="comment">// 创建一个可读流</span></span><br><span class="line"><span class="keyword">var</span> readStream = fs.createReadStream(<span class="string">'input.txt'</span>);</span><br><span class="line"><span class="comment">// 创建一个可写流</span></span><br><span class="line"><span class="keyword">var</span> writeStream = fs.createWriteStream(<span class="string">'output.txt'</span>);</span><br><span class="line"><span class="comment">// 管道读写操作:读取input.txt文件内容，并将内容写入到output.txt文件中</span></span><br><span class="line">readStream.pipe(writeStream);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'程序执行完毕'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="练习">练习</h2>
+<p>1、判断服务器上面有没有upload目录，如果没有的话就创建这个目录(一般用于图片上传，要上传到一个目录，如果不存在就要创建)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">fs.stat(<span class="string">'upload'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,stats</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;  <span class="comment">// 目录不存在 --&gt; 如果不存在就要执行创建操作</span></span><br><span class="line">        <span class="comment">// console.log(err);</span></span><br><span class="line">        <span class="comment">// return false;</span></span><br><span class="line">        fs.mkdir(<span class="string">'upload'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(error)&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(error);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'创建成功'</span>); <span class="comment">//如果没有此目录就创建此目录</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'目录已经存在'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(stats.isDirectory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; node test</span><br><span class="line">创建成功</span><br><span class="line">&gt; node test</span><br><span class="line">目录已经存在</span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>2、找出html目录下面的所有目录并打印出来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">fs.readdir(<span class="string">'html'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,files</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123; <span class="comment">//拿到html目录下的所有文件和目录</span></span><br><span class="line">        <span class="comment">// console.log(files);</span></span><br><span class="line">        <span class="comment">// 判断是目录还是文件</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;files.length;i++)&#123; <span class="comment">// for循环遍历所有目录文件</span></span><br><span class="line">            <span class="built_in">console</span>.log(files[i]); <span class="comment">// 这里打印，files[i]就是存在的</span></span><br><span class="line">            fs.stat(files[i],<span class="function"><span class="keyword">function</span>(<span class="params">error,stats</span>)</span>&#123; <span class="comment">//判断是目录还是文件</span></span><br><span class="line">                <span class="comment">// fs.stat是异步，先打印一下files[i] </span></span><br><span class="line">                <span class="built_in">console</span>.log(files[i]);  <span class="comment">//undefined</span></span><br><span class="line">                <span class="comment">// 你没法在这里拿到files[i],这是错误的写法</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>正确写法：匿名自执行函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> filesArr = [];</span><br><span class="line">fs.readdir(<span class="string">'html'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,files</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;  <span class="comment">// 判断是目录还是文件夹</span></span><br><span class="line">        <span class="built_in">console</span>.log(files); <span class="comment">// 数组：包含目录下所有目录和文件</span></span><br><span class="line">        (<span class="function"><span class="keyword">function</span> <span class="title">getFile</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(i==files.length)&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(filesArr); <span class="comment">// 打印出所有的目录</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            fs.stat(<span class="string">'html/'</span>+files[i],<span class="function"><span class="keyword">function</span>(<span class="params">error,stats</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(stats.isDirectory())&#123; <span class="comment">// 如果是目录</span></span><br><span class="line">                    filesArr.push(files[i]);  <span class="comment">// 就保存数据</span></span><br><span class="line">                &#125;</span><br><span class="line">                getFile(i+<span class="number">1</span>); <span class="comment">// 递归调用</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)(<span class="number">0</span>) <span class="comment">// 立即执行函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="解决异步问题">解决异步问题</h2>
+<p>nodejs 是<code>单进程单线程应用程序</code>，但是通过<code>事件和回调</code>支持并发，所以性能非常高，nodejs的<code>每一个api都是异步的</code>，并作为一个独立线程运行，使用异步函数调用，并处理并发。</p>
+<p>我们经常使用的File的readFile事件就是一个并发事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"1"</span>);</span><br><span class="line">fs.readFile(<span class="string">"mime.json"</span>,<span class="function"><span class="keyword">function</span> (<span class="params">err,data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"3"</span>);</span><br></pre></td></tr></table></figure>
+<p>代码的执行顺序是1-3-2；但是我们很多时候会需要1-2-3的方式去执行方法，这个时候我们可以通过以下三种方式去解决这个问题：</p>
+<p>1、将readFile改成同步方法。即readFile–&gt;readFileSync</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fsSync = fs.readFileSync(<span class="string">'./mime.json'</span>);</span><br><span class="line"><span class="keyword">const</span> mimeObj = <span class="built_in">JSON</span>.parse(fsSync.toString());</span><br></pre></td></tr></table></figure>
+<p>2、通过回调的方式解决</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"1"</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMime</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">"mime.json"</span>,<span class="function"><span class="keyword">function</span> (<span class="params">err,data</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// console.log(data.toString());</span></span><br><span class="line">        callback(data.toString()) ;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"2"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">getMime(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"3"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>3、nodejs 有多个内置的事件，我们可以通过引入events模块，并通过实例化eventEmitter类来绑定和监听事件，通过事件驱动的方式解决异步的问题，也可以说成是广播或者订阅。</p>
+<p>广播和接收广播 ---- 订阅和通知：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> events = <span class="built_in">require</span>(<span class="string">"events"</span>);</span><br><span class="line"><span class="keyword">const</span> eventEmitter = <span class="keyword">new</span> events.EventEmitter();</span><br><span class="line"><span class="comment">//监听广播</span></span><br><span class="line">eventEmitter.on(<span class="string">'to_parent'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//接受到了广播事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"接受到了广播事件"</span>)</span><br><span class="line">&#125;);</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"开始广播"</span>);</span><br><span class="line">    eventEmitter.emit(<span class="string">"to_parent"</span>,<span class="string">"发送数据"</span>);</span><br><span class="line">&#125;,<span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+<p>在readFIle中这样使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"1"</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMime</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">"mime.json"</span>,<span class="function"><span class="keyword">function</span> (<span class="params">err,data</span>) </span>&#123;</span><br><span class="line">       eventEmitter.emit(<span class="string">"to_parent"</span>,data);</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">"2"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">getMime();</span><br><span class="line">eventEmitter.on(<span class="string">'to_parent'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//接受到了广播事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"接受到了广播事件"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"3"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>4、使用Promise方法—略</p>
+<p>Promise 是一种对异步操作的封装，可以通过独立的接口添加在异步操作执行成功、失败时执行的方法。主流的规范是 Promises/A+。</p>
+<p><strong>Promise中有几个状态</strong>：</p>
+<ul>
+<li>pending: 初始状态, 非 fulfilled 或 rejected；</li>
+<li>fulfilled: 成功的操作，为表述方便，fulfilled 使用 resolved 代替；</li>
+<li>rejected: 失败的操作。</li>
+</ul>
+<p>pending可以转化为fulfilled或rejected并且只能转化一次，也就是说如果pending转化到fulfilled状态，那么就不能再转化到rejected。并且fulfilled和rejected状态只能由pending转化而来，两者之间不能互相转换。</p>
+<h3 id="promise的基本语法">Promise的基本语法</h3>
+<ul>
+<li>Promise实例必须实现then这个方法</li>
+<li>then()必须可以接收两个函数作为参数</li>
+<li>then()返回的必须是一个Promise实例</li>
+</ul>
+<p>5、async/await方法</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Elaine Zhong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Elaine Zhong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node-js/" rel="tag"># node.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/nodejs-04-npm/" rel="next" title="04_npm">
+                <i class="fa fa-chevron-left"></i> 04_npm
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/nodejs-06-Promise/" rel="prev" title="06_Promise">
+                06_Promise <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/21.gif" alt="Elaine Zhong">
+            
+              <p class="site-author-name" itemprop="name">Elaine Zhong</p>
+              <p class="site-description motion-element" itemprop="description">弹指间，樯橹灰飞烟灭。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ElaineXHZhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:elainezhongxh@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">05-Node.js fs模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-fs-stat-检测是文件还是目录"><span class="nav-number">1.1.</span> <span class="nav-text">1、fs.stat 检测是文件还是目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-fs-mkdir-创建目录"><span class="nav-number">1.2.</span> <span class="nav-text">2、fs.mkdir 创建目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-fs-writefile-创建写入文件"><span class="nav-number">1.3.</span> <span class="nav-text">3、fs.writeFile 创建写入文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-fs-appendfile-追加文件"><span class="nav-number">1.4.</span> <span class="nav-text">4、fs.appendFile 追加文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-fs-readfile-读取文件"><span class="nav-number">1.5.</span> <span class="nav-text">5、fs.readFile 读取文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-fs-readdir-读取目录"><span class="nav-number">1.6.</span> <span class="nav-text">6、fs.readdir 读取目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-fs-rename-重命名"><span class="nav-number">1.7.</span> <span class="nav-text">7、fs.rename 重命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-fs-rmdir-删除目录"><span class="nav-number">1.8.</span> <span class="nav-text">8、fs.rmdir 删除目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-fs-unlink-删除文件"><span class="nav-number">1.9.</span> <span class="nav-text">9、fs.unlink 删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-fs-createreadstream-以文件流的方式读取数据"><span class="nav-number">1.10.</span> <span class="nav-text">10、fs.createReadStream 以文件流的方式读取数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-fs-createwritestream-以文件流的方式写入文件"><span class="nav-number">1.11.</span> <span class="nav-text">11、fs.createWriteStream 以文件流的方式写入文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-readstream-pipe-writestream-以管道流的方式读取文件和写入文件"><span class="nav-number">1.12.</span> <span class="nav-text">12、readStream.pipe(writeStream) 以管道流的方式读取文件和写入文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">1.13.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决异步问题"><span class="nav-number">1.14.</span> <span class="nav-text">解决异步问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#promise的基本语法"><span class="nav-number">1.14.1.</span> <span class="nav-text">Promise的基本语法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Elaine Zhong</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'HRmeHgY5q4h81DuWKA5Xecb5-gzGzoHsz',
+        appKey: 'IHxXEldAQ9HvX50OQBco4Rgo',
+        placeholder: '请您在此处留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("t6ja4sx6jhDLUl6m1zehpfKf-gzGzoHsz", "wFhwhhVKsu2lewYHlLwhYGjk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"right","hOffset":30,"vOffset":-20},"mobile":{"show":false,"scale":0.05},"react":{"opacityDefault":1,"opacityOnHover":0.2}});</script></body>
+</html>

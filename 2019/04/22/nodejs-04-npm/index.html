@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="node.js,">
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="弹指间，樯橹灰飞烟灭。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="04-包与npm、第三方模块安装、package.json、cnpm">
+<meta name="keywords" content="node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04_npm">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/nodejs-04-npm/index.html">
 <meta property="og:site_name" content="Elaine Zhong">
-<meta property="og:description" content="弹指间，樯橹灰飞烟灭。">
+<meta property="og:description" content="04-包与npm、第三方模块安装、package.json、cnpm">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T10:42:06.345Z">
+<meta property="og:image" content="https://miro.medium.com/max/1620/1*hj-_anuWthYZs0x22hE9lA.png">
+<meta property="og:updated_time" content="2019-04-22T04:50:48.637Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="弹指间，樯橹灰飞烟灭。">
+<meta name="twitter:title" content="04_npm">
+<meta name="twitter:description" content="04-包与npm、第三方模块安装、package.json、cnpm">
+<meta name="twitter:image" content="https://miro.medium.com/max/1620/1*hj-_anuWthYZs0x22hE9lA.png">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/nodejs-04-npm/">
 
 
 
 
 
-  <title>tags | Elaine Zhong</title>
+  <title>04_npm | Elaine Zhong</title>
   
 
 
@@ -287,40 +290,263 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/nodejs-04-npm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Elaine Zhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/21.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elaine Zhong">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 2 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/hexo/" style="font-size: 12px; color: #ccc">hexo</a> <a href="/tags/node-js/" style="font-size: 30px; color: #111">node.js</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">04_npm</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T12:45:37+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">node.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/22/nodejs-04-npm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/nodejs-04-npm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/22/nodejs-04-npm/" class="leancloud_visitors" data-flag-title="04_npm">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1>04-包与npm、第三方模块安装、package.json、cnpm</h1>
+<p><img src="https://miro.medium.com/max/1620/1*hj-_anuWthYZs0x22hE9lA.png" alt></p>
+<a id="more"></a>
+<h2 id="一-包与-npm">一、包与 NPM</h2>
+<p>1、包</p>
+<p>Nodejs 中除了它自己提供的<code>核心模块</code>外，我们可以<code>自定义模块</code>，也可以使用<code>第三方的模块</code>。Nodejs 中第三方模块由包组成，可以通过包来对一组具有相互依赖关系的模块进行统一管理。</p>
+<p>完全符合 CommonJs 规范的包目录一般包含如下这些文件。</p>
+<p>• <code>package.json :包描述文件</code>。</p>
+<p>• bin :用于存放可执行二进制文件的目录。</p>
+<p>• lib :用于存放 JavaScript 代码的目录。</p>
+<p>• doc :用于存放文档的目录。</p>
+<p>在 NodeJs 中通过 NPM 命令来下载第三方的模块（包）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i silly-datetime –save </span><br><span class="line"><span class="keyword">var</span> sd = <span class="built_in">require</span>(<span class="string">'silly-datetime'</span>); </span><br><span class="line">sd.format(<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="string">'YYYY-MM-DD HH:mm'</span>);</span><br></pre></td></tr></table></figure>
+<p>2、NPM介绍</p>
+<p>npm是<code>世界上最大的开放源代码的生态系统</code>。我们可以通过npm下载各种各样的包， 这些源代码（包）我们可以在 <a href="https://www.npmjs.com" target="_blank" rel="noopener">https://www.npmjs.com</a> 找到。</p>
+<p><code>npm 是随同 NodeJS 一起安装的包管理工具</code>，能解决 NodeJS 代码部署上的很多问题， 常见的使用场景有以下几种：</p>
+<ol>
+<li>允许用户从 NPM 服务器下载别人编写的第三方包到本地使用。(silly-datetime)</li>
+<li>允许用户从 NPM 服务器下载并安装别人编写的命令行程序(工具)到本地使用。 （supervisor）</li>
+<li>允许用户将自己编写的包或命令行程序上传到 NPM 服务器供别人使用。</li>
+</ol>
+<h2 id="二-npm-命令详解">二、NPM 命令详解。</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm -v	<span class="comment">// 查看npm版本</span></span><br><span class="line">npm install  moduleName	<span class="comment">//安装模块 </span></span><br><span class="line">npm uninstall moudleName  <span class="comment">//卸载模块 </span></span><br><span class="line">npm list  <span class="comment">//查看当前目录下已安装的node包</span></span><br><span class="line">npm info jquery  <span class="comment">//查看jquery的版本 </span></span><br><span class="line">npm install jquery@<span class="number">1.8</span><span class="number">.0</span>  <span class="comment">//指定版本安装</span></span><br></pre></td></tr></table></figure>
+<h2 id="三-package-json">三、package.json</h2>
+<p>1、创建 package.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init </span><br><span class="line">npm init –yes //yes表示一路默认创建，还有 -f表示force</span><br></pre></td></tr></table></figure>
+<p>2、package.json 文件<strong>就是一个JSON对象，该对象的每一个成员就是当前项目的一项设置。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;   </span><br><span class="line">&quot;name&quot;: &quot;test&quot;,   //项目名称</span><br><span class="line">&quot;version&quot;: &quot;1.0.0&quot;,   //项目版本号</span><br><span class="line">&quot;description&quot;: &quot;test&quot;,   </span><br><span class="line">&quot;main&quot;: &quot;main.js&quot;,   </span><br><span class="line">&quot;keywords&quot;: [     &quot;test&quot;   ],   </span><br><span class="line">&quot;author&quot;: &quot;wade&quot;,   </span><br><span class="line">&quot;license&quot;: &quot;MIT&quot;,   </span><br><span class="line">&quot;dependencies&quot;: &#123;     </span><br><span class="line">&quot;express&quot;: &quot;^4.10.1&quot;   </span><br><span class="line">&#125;,   </span><br><span class="line">&quot;devDependencies&quot;: &#123;     </span><br><span class="line">&quot;jslint&quot;: &quot;^0.6.5&quot;   </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>必须字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name	//项目名称</span><br><span class="line">version	//项目版本号</span><br></pre></td></tr></table></figure>
+<p>可选字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title	//标题</span><br><span class="line">author	//是一个人</span><br><span class="line">contributors	//是一组人</span><br><span class="line">homepage	//</span><br></pre></td></tr></table></figure>
+<p>3、安装模块并把模块写入 package.json(依赖)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install  babel-cli  --save-dev </span><br><span class="line">npm install 模块 --save </span><br><span class="line">npm install 模块 --save-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -d 就是npm install --save-dev</span><br><span class="line">npm insatll -s 就是npm install --save</span><br></pre></td></tr></table></figure>
+<p>Dependencies一词的中文意思是<code>依赖</code>和附属的意思，而dev则是develop（<code>开发</code>）的简写。</p>
+<p>所以它们的区别在 package.json 文件里面体现出来的就是，使用 --save-dev 安装的插件，被写入到 devDependencies 域里面去，而使用 --save 安装的插件，则是被写入到 dependencies 区块里面去。</p>
+<p>package.json 文件里面的 devDependencies  和 dependencies 对象有什么区别呢？<code>devDependencies 里面的插件只用于开发环境，不用于生产环境</code>，而 dependencies 是需要发布到生产环境的。</p>
+<p>使用 npm i 安装package.json里的依赖时，两部分的包都会pull下来。</p>
+<p>比如：</p>
+<ul>
+<li>我们写一个项目要依赖于jQuery，<code>没有这个包的依赖运行就会报错</code>，这时候就把这个依赖写入<code>dependencies</code> ；</li>
+<li>而我们使用的一些构建工具比如glup、webpack这些只是在开发中使用的包，<code>上线以后就和他们没关系</code>了，所以将它写入<code>devDependencies</code>。</li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Elaine Zhong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Elaine Zhong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node-js/" rel="tag"># node.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/nodejs-03-user-defined-module/" rel="next" title="03_user_defined_module">
+                <i class="fa fa-chevron-left"></i> 03_user_defined_module
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/nodejs-05-Fs-Module/" rel="prev" title="05_Fs_Module">
+                05_Fs_Module <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -356,8 +582,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -435,6 +670,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">04-包与npm、第三方模块安装、package.json、cnpm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-包与-npm"><span class="nav-number">1.1.</span> <span class="nav-text">一、包与 NPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-npm-命令详解"><span class="nav-number">1.2.</span> <span class="nav-text">二、NPM 命令详解。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-package-json"><span class="nav-number">1.3.</span> <span class="nav-text">三、package.json</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
