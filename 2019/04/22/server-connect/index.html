@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="nodejs,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="弹指间，樯橹灰飞烟灭。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Elaine Zhong">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Nodejs server &amp;amp;&amp;amp; Python servernodejs server和python server之间用RESTful API通信，把前端上传图片的文件路径传给python server. Client.js (node.js server)  1234567891011121314151617181920212223242526272829303132333435">
+<meta name="keywords" content="nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="server_connect">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/server-connect/index.html">
 <meta property="og:site_name" content="Elaine Zhong">
-<meta property="og:description" content="弹指间，樯橹灰飞烟灭。">
+<meta property="og:description" content="Nodejs server &amp;amp;&amp;amp; Python servernodejs server和python server之间用RESTful API通信，把前端上传图片的文件路径传给python server. Client.js (node.js server)  1234567891011121314151617181920212223242526272829303132333435">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-22T03:01:07.213Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elaine Zhong">
-<meta name="twitter:description" content="弹指间，樯橹灰飞烟灭。">
+<meta name="twitter:title" content="server_connect">
+<meta name="twitter:description" content="Nodejs server &amp;amp;&amp;amp; Python servernodejs server和python server之间用RESTful API通信，把前端上传图片的文件路径传给python server. Client.js (node.js server)  1234567891011121314151617181920212223242526272829303132333435">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/server-connect/">
 
 
 
 
 
-  <title>Elaine Zhong</title>
+  <title>server_connect | Elaine Zhong</title>
   
 
 
@@ -143,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,9 +285,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -316,9 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/22/server-connect/" itemprop="url">server_connect</a></h1>
+          <h1 class="post-title" itemprop="name headline">server_connect</h1>
         
 
         <div class="post-meta">
@@ -411,9 +410,7 @@
       
 
       
-        
-          
-            <h1 id="Nodejs-server-amp-amp-Python-server"><a href="#Nodejs-server-amp-amp-Python-server" class="headerlink" title="Nodejs server &amp;&amp; Python server"></a>Nodejs server &amp;&amp; Python server</h1><p>nodejs server和python server之间用RESTful API通信，把前端上传图片的文件路径传给python server.</p>
+        <h1 id="Nodejs-server-amp-amp-Python-server"><a href="#Nodejs-server-amp-amp-Python-server" class="headerlink" title="Nodejs server &amp;&amp; Python server"></a>Nodejs server &amp;&amp; Python server</h1><p>nodejs server和python server之间用RESTful API通信，把前端上传图片的文件路径传给python server.</p>
 <font color="914DAD"><strong>Client.js (node.js server)</strong></font>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> multer = <span class="built_in">require</span>(<span class="string">'multer'</span>);</span><br><span class="line"><span class="comment">// var fs = require('fs');</span></span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="comment">// var request = require('request');</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">   res.send(<span class="string">'Hello World'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">8081</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> host = server.address().address</span><br><span class="line">  <span class="keyword">var</span> port = server.address().port</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"应用实例，访问地址为 http://%s:%s"</span>, host, port)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// upload image</span></span><br><span class="line"><span class="keyword">var</span> storage01 = multer.diskStorage(&#123; </span><br><span class="line">    destination: <span class="string">'./images/'</span>,    </span><br><span class="line">    filename: <span class="function"><span class="keyword">function</span>(<span class="params">req, file, cb</span>) </span>&#123;        </span><br><span class="line">        <span class="keyword">return</span> cb(<span class="literal">null</span>, <span class="string">""</span> + file.originalname);</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;);</span><br><span class="line">app.post(<span class="string">"/user/image"</span>,  </span><br><span class="line">    multer(&#123; <span class="attr">storage</span>: storage01 &#125;).single(<span class="string">'image'</span>), <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Sign saved!'</span>);</span><br><span class="line">        <span class="keyword">var</span> email = req.body.email;</span><br><span class="line">        <span class="built_in">console</span>.log(email);</span><br><span class="line">        <span class="keyword">var</span> path01 = path.join(__dirname,req.file.path);</span><br><span class="line">        <span class="comment">// console.log(path01);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">        <span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line">        <span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">        <span class="keyword">var</span> qs = <span class="built_in">require</span>(<span class="string">'querystring'</span>);</span><br><span class="line">        <span class="keyword">var</span> opt = &#123;</span><br><span class="line">            host:<span class="string">'127.0.0.1'</span>,</span><br><span class="line">            port:<span class="string">'8888'</span>,</span><br><span class="line">            method:<span class="string">'POST'</span>,</span><br><span class="line">            path:<span class="string">'/'</span>,</span><br><span class="line">            headers:&#123;</span><br><span class="line">                <span class="string">'content-type'</span>: <span class="string">"application/json"</span></span><br><span class="line">                <span class="comment">//'accept-encoding': 'gzip'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">var</span> body = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">var</span> req = http.request(opt, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        </span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"Got response: "</span> + res.statusCode);</span><br><span class="line">            res.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123;</span><br><span class="line">                body += d;</span><br><span class="line">            &#125;);</span><br><span class="line">            res.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(res.headers);</span><br><span class="line">                <span class="built_in">console</span>.log(body)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">        req.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"Got error: "</span> + e.message);</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// var data = &#123;num:"1",num1:"123",type:"add"&#125;;</span></span><br><span class="line">        <span class="keyword">var</span> data = &#123;<span class="string">'path01'</span>:<span class="string">`'<span class="subst">$&#123;path01&#125;</span>'`</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        req.write(qs.stringify(data));</span><br><span class="line">        req.end();</span><br><span class="line"><span class="comment">//</span></span><br><span class="line">        <span class="keyword">return</span> res.status(<span class="number">200</span>).end(<span class="string">'success'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// var request = require('request');</span></span><br><span class="line"><span class="comment">// var http = require('http');</span></span><br><span class="line"><span class="comment">// var qs = require('querystring');</span></span><br><span class="line"><span class="comment">// var opt = &#123;</span></span><br><span class="line"><span class="comment">//     host:'127.0.0.1',</span></span><br><span class="line"><span class="comment">//     port:'8888',</span></span><br><span class="line"><span class="comment">//     method:'POST',</span></span><br><span class="line"><span class="comment">//     path:'/',</span></span><br><span class="line"><span class="comment">//     headers:&#123;</span></span><br><span class="line"><span class="comment">//         'content-type': "application/json"</span></span><br><span class="line"><span class="comment">//         //'accept-encoding': 'gzip'</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="comment">// var body = '';</span></span><br><span class="line"><span class="comment">// var req = http.request(opt, function(res) &#123;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//     console.log("Got response: " + res.statusCode);</span></span><br><span class="line"><span class="comment">//     res.on('data',function(d)&#123;</span></span><br><span class="line"><span class="comment">//         body += d;</span></span><br><span class="line"><span class="comment">//     &#125;);</span></span><br><span class="line"><span class="comment">//     res.on('end', function()&#123;</span></span><br><span class="line"><span class="comment">//         console.log(res.headers);</span></span><br><span class="line"><span class="comment">//         console.log(body)</span></span><br><span class="line"><span class="comment">//     &#125;);</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line"><span class="comment">// req.on('error', function(e) &#123;</span></span><br><span class="line"><span class="comment">//     console.log("Got error: " + e.message);</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// // var data = &#123;num:"1",num1:"123",type:"add"&#125;;</span></span><br><span class="line"><span class="comment">// var data = &#123;'path01':'path01'&#125;;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// req.write(qs.stringify(data));</span></span><br><span class="line"><span class="comment">// req.end();</span></span><br></pre></td></tr></table></figure>
@@ -421,8 +418,6 @@
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// var http = require("http");            </span></span><br><span class="line"><span class="comment">// var url = require("url");           </span></span><br><span class="line"><span class="comment">// var query = require("querystring");    </span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// var server = function(request,response)&#123;</span></span><br><span class="line"><span class="comment">//     response.writeHead(200,&#123;"Content-Type":"text/json"&#125;);</span></span><br><span class="line"><span class="comment">//     var postdata = "";</span></span><br><span class="line"><span class="comment">//     request.addListener("data",function(postchunk)&#123;</span></span><br><span class="line"><span class="comment">//         postdata += postchunk;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//     &#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//     request.addListener("end",function()&#123;</span></span><br><span class="line"><span class="comment">//         var params = query.parse(postdata);</span></span><br><span class="line"><span class="comment">//         console.log(params['path01'])</span></span><br><span class="line"><span class="comment">//         console.log(params['path01'])</span></span><br><span class="line"><span class="comment">//         // console.log(params['result']);</span></span><br><span class="line"><span class="comment">//         response.write(JSON.stringify(params));</span></span><br><span class="line"><span class="comment">//         response.end();</span></span><br><span class="line"><span class="comment">//     &#125;)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// http.createServer(server).listen(8888);</span></span><br><span class="line"><span class="comment">// console.log("Server start!");  </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//---------------------</span></span><br><span class="line"><span class="comment">//express.js 文件</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">8888</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> host = server.address().address</span><br><span class="line">    <span class="keyword">var</span> port = server.address().port</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"应用实例，访问地址为 http://%s:%s"</span>, host, port)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/uploadFile'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    response.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/json"</span>&#125;);</span><br><span class="line">    <span class="keyword">var</span> postdata = <span class="string">""</span>;</span><br><span class="line">    request.addListener(<span class="string">"data"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">postchunk</span>)</span>&#123;</span><br><span class="line">        postdata += postchunk;</span><br><span class="line">    </span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    request.addListener(<span class="string">"end"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> params = query.parse(postdata);</span><br><span class="line">        <span class="built_in">console</span>.log(params[<span class="string">'path01'</span>])</span><br><span class="line">        <span class="built_in">console</span>.log(params[<span class="string">'path01'</span>])</span><br><span class="line">        <span class="comment">// console.log(params['result']);</span></span><br><span class="line">        response.write(<span class="built_in">JSON</span>.stringify(params));</span><br><span class="line">        response.end();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//---------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// var http = require("http");            //提供web服务</span></span><br><span class="line"><span class="comment">// var url = require("url");            //解析GET请求  </span></span><br><span class="line"><span class="comment">// var query = require("querystring");    //解析POST请求</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// //服务</span></span><br><span class="line"><span class="comment">// var server = function(request,response)&#123;</span></span><br><span class="line"><span class="comment">//     //定义报文头</span></span><br><span class="line"><span class="comment">//     response.writeHead(200,&#123;"Content-Type":"text/json"&#125;);</span></span><br><span class="line"><span class="comment">//     //判断是GET/POST请求</span></span><br><span class="line"><span class="comment">//     if(request.method == "GET")&#123;</span></span><br><span class="line"><span class="comment">//         var params = [];</span></span><br><span class="line"><span class="comment">//         params = url.parse(request.url,true).query;</span></span><br><span class="line"><span class="comment">//         params['result'] = compute(params);</span></span><br><span class="line"><span class="comment">//         response.write(JSON.stringify(params));</span></span><br><span class="line"><span class="comment">//         response.end();</span></span><br><span class="line"><span class="comment">//     &#125;else&#123;</span></span><br><span class="line"><span class="comment">//         var postdata = "";</span></span><br><span class="line"><span class="comment">//         request.addListener("data",function(postchunk)&#123;</span></span><br><span class="line"><span class="comment">//             postdata += postchunk;</span></span><br><span class="line">        </span><br><span class="line"><span class="comment">//         &#125;)</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//         //POST结束输出结果</span></span><br><span class="line"><span class="comment">//         request.addListener("end",function()&#123;</span></span><br><span class="line"><span class="comment">//             var params = query.parse(postdata);</span></span><br><span class="line"><span class="comment">//             console.log(params['path01'])</span></span><br><span class="line"><span class="comment">//             console.log(params['path01'])</span></span><br><span class="line"><span class="comment">//             params['result'] = compute(params);</span></span><br><span class="line"><span class="comment">//             // console.log(params['result']);</span></span><br><span class="line"><span class="comment">//             response.write(JSON.stringify(params));</span></span><br><span class="line"><span class="comment">//             response.end();</span></span><br><span class="line"><span class="comment">//         &#125;)</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// //计算</span></span><br><span class="line"><span class="comment">// var compute = function(params)&#123;</span></span><br><span class="line"><span class="comment">//     switch(params['type'])&#123;</span></span><br><span class="line"><span class="comment">//         case "add": return parseFloat(params['num']) + parseFloat(params['num1']);break;</span></span><br><span class="line"><span class="comment">//         case "sub": return parseFloat(params['num']) - parseFloat(params['num1']);break;</span></span><br><span class="line"><span class="comment">//         case "mul": return parseFloat(params['num']) * parseFloat(params['num1']);break;</span></span><br><span class="line"><span class="comment">//         case "div": return parseFloat(params['num']) / parseFloat(params['num1']);break;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// http.createServer(server).listen(8888);</span></span><br><span class="line"><span class="comment">// console.log("Server start!");</span></span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -432,168 +427,70 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Elaine Zhong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Elaine Zhong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Elaine Zhong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/21.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Elaine Zhong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/21/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T13:30:46+08:00">
-                2019-04-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/21/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/21/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/04/21/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/21/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -603,10 +500,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -614,6 +512,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -634,8 +539,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -713,6 +627,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nodejs-server-amp-amp-Python-server"><span class="nav-number">1.</span> <span class="nav-text">Nodejs server &amp;&amp; Python server</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -860,6 +790,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
