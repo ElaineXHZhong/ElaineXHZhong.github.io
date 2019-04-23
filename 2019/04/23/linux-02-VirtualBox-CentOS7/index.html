@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="linux VirtualBox,">
 
 
 
@@ -79,16 +79,56 @@
 
 
 
-<meta name="description" content="弹指间，樯橹灰飞烟灭。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Elaine Zhong">
-<meta property="og:url" content="http://yoursite.com/archives/2019/page/2/index.html">
+<meta name="description" content="02-使用VirtualBox安装CentOS7">
+<meta name="keywords" content="linux VirtualBox">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux-02-VirtualBox-CentOS7">
+<meta property="og:url" content="http://yoursite.com/2019/04/23/linux-02-VirtualBox-CentOS7/index.html">
 <meta property="og:site_name" content="Elaine Zhong">
-<meta property="og:description" content="弹指间，樯橹灰飞烟灭。">
+<meta property="og:description" content="02-使用VirtualBox安装CentOS7">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/d/d5/Virtualbox_logo.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-7591801cceb322b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-2d309b2509195af0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-b6c98c250b7273c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-395277a6015d5fb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-60425f5b95cfc42c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-8273fb1f8b419d6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-89913ffc474def08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-44671723ac4ccb65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/463/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-5d1cbebd25a0ea9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/463/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-20a97b4aa2a97642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/463/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-3c3b1c2442578c31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/555/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-0969eef9fb56b73e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/555/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-b5744d3d93493e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/677/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-35f0011c9fe5c3a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/877/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-40f5b72e4591444a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/777/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-956c3e691c708457.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/777/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-e4b64017cecd43d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/881/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-8858c806ed5e8c4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-801b555d011e0311.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-08d6036b4074ddb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/777/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-286bcb5457679c67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/667/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-3f5b41074d661e30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-36e22d95b9a24af1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-ff6e9d77bf98db21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-7a7ee660549e1e1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-ef66657f487eb171.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-f3d08c5496294bb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-0c5dc7671b92b0aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-433924aaa33ca07f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-636db49c5f3b3aaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-029854f5111070cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-fa667f19966253a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/722/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-1a2be253596bcf3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-b87c7529d3fe23e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-d60fbfb2ce967a2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3623016-7750405329e45afb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:updated_time" content="2019-04-23T14:08:57.433Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elaine Zhong">
-<meta name="twitter:description" content="弹指间，樯橹灰飞烟灭。">
+<meta name="twitter:title" content="linux-02-VirtualBox-CentOS7">
+<meta name="twitter:description" content="02-使用VirtualBox安装CentOS7">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/d/d5/Virtualbox_logo.png">
 
 
 
@@ -118,13 +158,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/page/2/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/23/linux-02-VirtualBox-CentOS7/">
 
 
 
 
 
-  <title>归档 | Elaine Zhong</title>
+  <title>linux-02-VirtualBox-CentOS7 | Elaine Zhong</title>
   
 
 
@@ -143,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,391 +324,341 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/linux-02-VirtualBox-CentOS7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Elaine Zhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/21.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elaine Zhong">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">linux-02-VirtualBox-CentOS7</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-23T22:07:01+08:00">
+                2019-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 28 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/23/linux-02-VirtualBox-CentOS7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/23/linux-02-VirtualBox-CentOS7/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2019/04/23/linux-02-VirtualBox-CentOS7/" class="leancloud_visitors" data-flag-title="linux-02-VirtualBox-CentOS7">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/linux-01-ubuntu-configuration/" itemprop="url">
-              
-                <span itemprop="name">01_ubuntu_configuration</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T18:14:53+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/nodejs-13-Nodemailer/" itemprop="url">
-              
-                <span itemprop="name">13-Nodemailer</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T13:43:09+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/work-summary-2019-4-9-md/" itemprop="url">
-              
-                <span itemprop="name">work-summary-2019-4-9.md</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T13:36:12+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/work-summary-2019-4-8-md/" itemprop="url">
-              
-                <span itemprop="name">work-summary-2019-4-8.md</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T13:34:46+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1>02-使用VirtualBox安装CentOS7</h1>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Virtualbox_logo.png" alt></p>
+<a id="more"></a>
+<h4 id="一-软件准备">一、软件准备</h4>
+<ul>
+<li>VirtualBox
+<ul>
+<li><a href="https://link.jianshu.com/?t=https://www.virtualbox.org/" target="_blank" rel="noopener">官网</a></li>
+<li>版本: <code>5.1.18</code></li>
+<li><a href="https://link.jianshu.com/?t=http://download.virtualbox.org/virtualbox/5.1.18/VirtualBox-5.1.18-114002-Win.exe" target="_blank" rel="noopener">下载地址</a></li>
+</ul>
+</li>
+<li>CentOS
+<ul>
+<li><a href="https://link.jianshu.com/?t=https://www.centos.org/" target="_blank" rel="noopener">官网</a></li>
+<li>版本: <code>CentOS-7</code></li>
+<li><a href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso" target="_blank" rel="noopener">下载地址</a></li>
+</ul>
+</li>
+</ul>
+<p>在不同站点中下载的文件名会是 CentOS-7-x86_64-DVD-1611.iso 这样的格式，其中 CentOS 表示 7.x 版本，x86_64 指的是 64 位操作系统，1611 指的是 2016 年的 11 月发布的版本，直接下载 DVD 版本的镜像文件。</p>
+<h4 id="二-安装环境">二、安装环境</h4>
+<ul>
+<li>WIN10</li>
+</ul>
+<p>VirtualBox安装简单,一直选择&quot;下一步&quot;即可：</p>
+<ol>
+<li>安装初始化页面</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-7591801cceb322b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp" alt></p>
+<ol start="2">
+<li>选择套件，此处我们全选</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-2d309b2509195af0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp" alt></p>
+<ol start="3">
+<li>选择是否创建桌面快捷方式和开始菜单等</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-b6c98c250b7273c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp" alt></p>
+<ol start="4">
+<li>提示会重置网络,忽略此警告继续安装</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-395277a6015d5fb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp" alt></p>
+<ol start="5">
+<li>点击确认, 开始安装</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-60425f5b95cfc42c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp" alt></p>
+<ol start="6">
+<li>安装完成, 启动VirtualBox</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-8273fb1f8b419d6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/618/format/webp" alt></p>
+<h4 id="三-在virtualbox中创建虚拟机">三、在VirtualBox中创建虚拟机</h4>
+<ol>
+<li>点击新建</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-89913ffc474def08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<ol start="2">
+<li>选择虚拟机的显示名称和类型</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-44671723ac4ccb65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/463/format/webp" alt></p>
+<ol start="3">
+<li>分配可使用的最大内存</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-5d1cbebd25a0ea9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/463/format/webp" alt></p>
+<ol start="4">
+<li>分配硬盘：创建虚拟硬盘</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-20a97b4aa2a97642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/463/format/webp" alt></p>
+<p>选择虚拟硬盘类型，因为通常不会用其他虚拟软件使用该硬盘，所以选择VDI</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-3c3b1c2442578c31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/555/format/webp" alt></p>
+<p>选择固定大小，因为固定大小速度较快</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-0969eef9fb56b73e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/555/format/webp" alt></p>
+<p>选择虚拟硬盘实际占用的文件夹和大小</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-b5744d3d93493e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/677/format/webp" alt></p>
+<p>点击创建后，VirtualBox创建占位文件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-35f0011c9fe5c3a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/877/format/webp" alt></p>
+<ol start="5">
+<li>此时,虚拟机已经创建完成</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-40f5b72e4591444a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/777/format/webp" alt></p>
+<h4 id="四-为虚拟机添加虚拟光盘">四、为虚拟机添加虚拟光盘</h4>
+<p>点击设置</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-956c3e691c708457.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/777/format/webp" alt></p>
+<p>调整虚拟机的启动顺序,首选使用光驱启动</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-e4b64017cecd43d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/881/format/webp" alt></p>
+<p>添加虚拟光盘,选择之前下载好的<code>CentOS-7-x86_64-DVD-1810.iso</code></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-8858c806ed5e8c4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>添加完成之后</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-801b555d011e0311.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>启动虚拟机</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-08d6036b4074ddb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/777/format/webp" alt></p>
+<h4 id="五-安装centos-7">五、安装CentOS 7</h4>
+<p>启动虚拟机后,进入CentOS 7的安装页面,选择<code>Install CentOS Linux 7</code>。<code>Test this medis &amp; Install CentOS Linux 7</code>在安装前会进行终端条件检查,此处不需要. 选择完成后,回车进入下一步</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-286bcb5457679c67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/667/format/webp" alt></p>
+<p>选择语言: 中文-&gt;简体中文</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-3f5b41074d661e30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>选择安装系统的磁盘位置</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-36e22d95b9a24af1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>设置之前VirtualBox为虚拟机分配的虚拟硬盘</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-ff6e9d77bf98db21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>选择需要安装的软件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-7a7ee660549e1e1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>此处根据喜好/需要选择是否安装桌面环境。如不需要桌面，可以选择<strong>最小安装</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-ef66657f487eb171.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>配置网络</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-f3d08c5496294bb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>点击安装后,进入如下页面</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-0c5dc7671b92b0aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>设置ROOT用户的密码</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-433924aaa33ca07f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>可以创建一个普通用户</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-636db49c5f3b3aaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>安装完成后,点击重启</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-029854f5111070cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>重启后,进入centos启动菜单,选择第一项，回车后进入系统。第二项<code>0-rescue..</code>是营救模式,用于系统故障时修复系统.</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-fa667f19966253a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/722/format/webp" alt></p>
+<p>选择同意许可</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-1a2be253596bcf3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-b87c7529d3fe23e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>点击&quot;完成配置&quot;,进入到用户选择页面:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-d60fbfb2ce967a2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>输入密码完成登录</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3623016-7750405329e45afb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>至此，CentOS7安装完成。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/hexo-01-common-commands/" itemprop="url">
-              
-                <span itemprop="name">01_common_commands</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T13:15:20+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/hexo-00-hello-world/" itemprop="url">
-              
-                <span itemprop="name">hello-world</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T13:11:46+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/nodejs-12-Router/" itemprop="url">
-              
-                <span itemprop="name">12_Router</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T13:08:41+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/nodejs-11-Get-Post/" itemprop="url">
-              
-                <span itemprop="name">11_Get_Post</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T13:06:34+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/nodejs-10-Callback-Event/" itemprop="url">
-              
-                <span itemprop="name">10_Callback_Event</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T13:03:04+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/nodejs-09-Create-Server/" itemprop="url">
-              
-                <span itemprop="name">09_Create_Server</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T13:00:04+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Elaine Zhong 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Elaine Zhong 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux-VirtualBox/" rel="tag"># linux VirtualBox</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/23/Continuous-delivery-02-GitLab-Introduction/" rel="next" title="Continuous-delivery-02-GitLab-Introduction">
+                <i class="fa fa-chevron-left"></i> Continuous-delivery-02-GitLab-Introduction
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2019/page/3/">3</a><a class="extend next" rel="next" href="/archives/2019/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -676,6 +666,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -696,8 +693,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -775,6 +781,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">02-使用VirtualBox安装CentOS7</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-软件准备"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">一、软件准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-安装环境"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">二、安装环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-在virtualbox中创建虚拟机"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">三、在VirtualBox中创建虚拟机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-为虚拟机添加虚拟光盘"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">四、为虚拟机添加虚拟光盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五-安装centos-7"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">五、安装CentOS 7</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -922,6 +944,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
